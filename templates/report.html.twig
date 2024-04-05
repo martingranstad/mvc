@@ -5,5 +5,35 @@
 {% block body %}
     <h1>Redovisningstexter</h1>
     <h2 id="kmom01">Kmom01</h2>
-    <p>Här kommer text</p>
+    <h3>Berätta kort om dina förkunskaper och tidigare erfarenheter kring objektorientering.</h3>
+    <p>
+        Jag läste oopython-kursen förra våren så därifrån har man med sig en del. Utöver det har jag
+        programmerat en hel del tidigare på egen hand och är ganska van med OO tankesättet.
+    </p>
+
+    <h3>Berätta kort om PHPs modell för klasser och objekt. Vilka är de grunder man behöver veta/förstå för att kunna komma igång och skapa sina första klasser?</h3>
+    <p>
+        Det går att skapa ett generisk objekt med stdClass men för att möjliggöra inkapsling så är det bättre att skapa sina egna klasser.
+        Det är viktigt skilja på klassen och en instans av klassen. Det kan exemplevis finnas en klass som beskriver vad en bil är och olika metoder som den kan utföra.
+        För att skapa en specifik bil skapas en instans av bilklassen. Inkapsling gör att vi kan skapa något som liknar ett API mot klassen där de som använder klassen inte behöver ha någon vetskap om dess implementation.
+        På det sättet är det möjligt att ändra hur en klass fungerar internt utan att de som använder klassen behöver göra några ändringar.
+    </p>
+
+    <h3>Reflektera kort över den kodbas, koden, strukturen som användes till uppgiften me/report, hur uppfattar du den?</h3>
+    <p>
+        De delar vi har arbetat med än så länge känns ganska tydliga. Det finns en del mappar som jag ännu inte riktigt vet vad de är till för som translations, var, vendor etc.
+        Detta antar jag att man kommer få grepp om under kursens gång. Jag har tidigare arbetat en del med django vilket verkar ha en liknande struktur med mvc tankesättet så det blir intressant att jämföra dessa.
+    </p>
+
+    <h3>Med tanke på artikeln “PHP The Right Way”, vilka delar in den finner du extra intressanta och värdefulla? Är det några särskilda områden som du känner att du vill veta mer om? Lyft fram några delar av artikeln som du känner mer värdefulla.</h3>
+    <p>
+        Jag har inte hunnit läsa allt än men jag tycker att det är intressant att läsa om tester och testdriven utveckling.
+        Det är en del som jag skulle vilja bli bättre på och har delvis experimenterat med på egna projekt. Kombinationen av funktionella och unit test är spännande.
+    </p>
+
+    <h3>Vilken är din TIL för detta kmom?</h3>
+    <p>
+        Det stora med det det här kursmomentet var mest bara att få fötterna lite blöta med symfony. Jag ser fram emot kommande kmom.
+    </p>
+
 {% endblock %}
