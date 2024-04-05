@@ -3,7 +3,8 @@
 {% block title %}Magic number{% endblock %}
 
 {% block body %}
-    <h1>Magic number</h1>
-    <p>Welcome to my awesome magical homepage.</p>
+    <h1 style="color: {{color}}; font-size: {{number}}px;">Magic number</h1>
+    <p>The h1 on this page will get a random color and size!</p>
     <p>This is the current magic number: {{ number }}</p>
+    <img src="{{ asset('img/glider.svg') }}" alt="">
 {% endblock %}

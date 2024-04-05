@@ -1,12 +1,63 @@
 body {
     margin: 0 auto;
-    max-width: 400px;
+    max-width: 600px;
 }
 body {
-    background: url('../images/background.jpg');
-    background-size: cover;
 }
 
 h1 {
     border-bottom: 4px double #ccc;
+}
+
+.site-header {
+    background: #333;
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.site-footer {
+    background: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+nav {
+    background: #d2d2d2;
+    color: #000000;
+    text-align: center;
+
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.some-page-wrapper {
+  margin: 15px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
 }

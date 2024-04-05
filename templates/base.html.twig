@@ -14,16 +14,19 @@
         {% endblock %}
     </head>
     <body>
-        <header class="site-header" style="background-image: url({{ asset('img/background.jpg') }})">
-            <span class="site-title">My Symfony Site</span>
+        <header class="site-header">
+            <span class="site-title">Me-sidan</span>
         </header>
         <nav>
             <ul>
                 <li><a href="{{ path('home') }}">Home</a></li>
                 <li><a href="{{ path('about') }}">About</a></li>
-                <li><a href="{{ path('lucky_number') }}">Lucky number</a></li>
+                <li><a href="{{ path('lucky') }}">Lucky number</a></li>
             </ul>
         </nav>
         {% block body %}{% endblock %}
+        <footer class="site-footer">
+            <p>En sida till MVC-kursen | &copy; 2024 Me-sidan</p>
+        </footer>
     </body>
 </html>
