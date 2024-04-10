@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Cards\Card;
 use App\Cards\CardHand;
 use App\Cards\DeckOfCards;
+use App\Cards\JokerDeckOfCards;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,7 +46,11 @@ class CardGameController extends AbstractController
     #[Route("/card", name: "card")]
     public function card(): Response
     {
-        $card = new Card("H", "3");
+        $card = new Card("", 0);
+        $card2 = new Card("H", 5);
+        $card3 = new Card("C", 13);
+        $cardHand = new CardHand([$card, $card2, $card3]);
+        $deck= new JokerDeckOfCards();
 
         return $this->render("card.html.twig");
     }

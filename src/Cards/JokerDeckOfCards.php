@@ -3,11 +3,14 @@
 namespace App\Cards;
 
 use App\Cards\Card;
-class DeckOfCards
+use App\Cards\DeckOfCards;
+
+
+class JokerDeckOfCards extends DeckOfCards
 {
     private $cards;
 
-    public function __construct()
+    public function __construct(int $numJokers = 2)
     {
         $this->cards = [];
 
@@ -21,20 +24,11 @@ class DeckOfCards
                 }
             }
         }
-    }
 
-    /**
-     * Returns an array of strings representing the cards.
-     *
-     * @return array Array of strings representing the cards.
-     */
-    public function getCardStrings(): array {
-        $cardStrings = [];
-        foreach ($this->cards as $card) {
-            $cardStrings[] = $card->getCardString();
+        //Add jokers
+        for ($i=0; $i<$numJokers; $i++) {
+            $this->cards[] = new Card("", 0);
         }
-        return $cardStrings;
     }
-
 
 }
