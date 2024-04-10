@@ -2,6 +2,10 @@
 
 namespace App\Controller;
 
+use App\Cards\Card;
+use App\Cards\CardHand;
+use App\Cards\DeckOfCards;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -41,6 +45,7 @@ class CardGameController extends AbstractController
     #[Route("/card", name: "card")]
     public function card(): Response
     {
+        $card = new Card("H", "3");
 
         return $this->render("card.html.twig");
     }
