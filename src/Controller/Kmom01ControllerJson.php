@@ -31,7 +31,7 @@ class Kmom01ControllerJson
             'date' => $todaysDate,
             'time' => $timeStamp,
         ];
-        
+
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
