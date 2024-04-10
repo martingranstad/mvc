@@ -44,14 +44,95 @@ class CardGameController extends AbstractController
     }
 
     #[Route("/card", name: "card")]
-    public function card(): Response
+    public function card(
+    ): Response
     {
-        $card = new Card("", 0);
-        $card2 = new Card("H", 5);
-        $card3 = new Card("C", 13);
-        $cardHand = new CardHand([$card, $card2, $card3]);
-        $deck= new JokerDeckOfCards();
-
         return $this->render("card.html.twig");
+    }
+
+    //Sorts and displays deck
+    #[Route("/card/deck", name: "card-deck")]
+    public function cardDeck(
+        SessionInterface $session
+    ): Response
+    {
+        $deck = $session->get("deck");
+        if (!$deck) {
+            $deck= new JokerDeckOfCards();
+        }
+        $deck->sortDeck();
+        $session->set("deck", $deck);
+        $data = [
+            "deck" => $deck->getCardStrings(),
+        ];
+
+        return $this->render("cards.html.twig", $data);
+    }
+    
+    //Shuffles and displays deck
+    #[Route("/card/deck/shuffle", name: "card-deck-shuffle")]
+    public function cardDeckShuffle(
+        SessionInterface $session
+    ): Response
+    {
+        $deck = $session->get("deck");
+        if (!$deck) {
+            $deck= new JokerDeckOfCards();
+        }
+        $deck->shuffleDeck();
+        $session->set("deck", $deck);
+        $data = [
+            "deck" => $deck->getCardStrings(),
+        ];
+
+        return $this->render("cards.html.twig", $data);
+    }
+
+
+    //Draws a card from the deck
+    #[Route("/card/deck/draw", name: "card-deck-draw")]
+    public function cardDeckDraw(
+        SessionInterface $session
+    ): Response
+    {
+        $deck = $session->get("deck");
+        if (!$deck) {
+            $deck= new JokerDeckOfCards();
+            $session->set("deck", $deck);
+        }
+
+        $card = $deck->drawCards(1)[0];
+
+        $data = [
+            "deck" => [$card->getCardString()],
+        ];
+
+        return $this->render("cards.html.twig", $data);
+    }
+
+    //Draws multiple cards from the deck
+    #[Route("/card/deck/draw/{number}", name: "card-deck-draw-multiple")]
+    public function cardDeckDrawMultiple(
+        SessionInterface $session,
+        int $number
+    ): Response
+    {
+        $deck = $session->get("deck");
+        if (!$deck) {
+            $deck= new JokerDeckOfCards();
+            $session->set("deck", $deck);
+        }
+
+        $cards = $deck->drawCards($number);
+        $card_strings = [];
+        foreach ($cards as $card) {
+            $card_strings[] = $card->getCardString();
+        }
+
+        $data = [
+            "deck" => $card_strings,
+        ];
+
+        return $this->render("cards.html.twig", $data);
     }
 }

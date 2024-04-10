@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Deck{% endblock %}
+
+{% block body %}
+{% for card in deck %}
+    {{ card }}
+{% endfor %}
+{% endblock %}
+    

@@ -8,7 +8,7 @@ use App\Cards\DeckOfCards;
 
 class JokerDeckOfCards extends DeckOfCards
 {
-    private $cards;
+    protected $cards;
 
     public function __construct(int $numJokers = 2)
     {
@@ -29,6 +29,7 @@ class JokerDeckOfCards extends DeckOfCards
         for ($i=0; $i<$numJokers; $i++) {
             $this->cards[] = new Card("", 0);
         }
+
     }
 
 }
