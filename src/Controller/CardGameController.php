@@ -16,13 +16,26 @@ class CardGameController extends AbstractController
     ): Response
     {
 
-        $session->set("test", true);
-
         $data = [
             'session' => var_export($session->all(), true),
         ];
 
         return $this->render('session.html.twig', $data);
+    }
+
+    #[Route("/session/delete", name: "session-delete")]
+    public function sessionDelete(
+        SessionInterface $session
+    ): Response
+    {
+        $session->clear();
+
+        $this->addFlash(
+            'notice',
+            'Nu är sessionen raderad!'
+        );
+
+        return $this->redirectToRoute("session");
     }
     
 }

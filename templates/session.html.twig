@@ -3,6 +3,7 @@
 {% block title %}Session{% endblock %}
 
 {% block body %}
+    {{ include('_flash.html.twig') }}
     <h1>Session</h1>
     <p>{{ session }}</p>
 {% endblock %}
