@@ -39,6 +39,13 @@ class DeckOfCards
     }
 
     /**
+     * Returns the number of cards in the deck.
+     */
+    public function getNumCards(): int {
+        return count($this->cards);
+    }
+
+    /**
      * Draws a specified number of cards from the deck.
      *
      * @param int $numCards The number of cards to draw.
