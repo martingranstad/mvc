@@ -11,18 +11,18 @@ class Card
     /**
      * Constructor for card class. 
      *
-     * @param string $suit The suit of the card "H"=Hearts, "C"=Clubs, "D"=Diamonds, "S"=Spades
-     * @param int $value The value of the card 2=2. For face cards ace=1, jack=11, queen=12, king=13
+     * @param string $suit The suit of the card "H"=Hearts, "C"=Clubs, "D"=Diamonds, "S"=Spades. ""=Joker
+     * @param int $value The value of the card 2=2. For face cards ace=1, jack=11, queen=12, king=13. Joker=0
      */
     public function __construct(string $suit, int $value)
     {
-        $validSuits = ['H', 'C', 'D', 'S'];
+        $validSuits = ['H', 'C', 'D', 'S', ''];
 
         if (!in_array($suit, $validSuits)) {
             throw new InvalidArgumentException("Invalid suit: $suit");
         }
 
-        if (!(1 <= $value && $value <= 13)) {
+        if (!(0 <= $value && $value <= 13)) {
             throw new InvalidArgumentException("Invalid card value: $value");
         }
 
@@ -44,9 +44,11 @@ class Card
             'C' => '♣',
             'D' => '♦',
             'S' => '♠',
+            '' => '',
         ];
 
         $values = [
+            0 => '🃏',
             1 => 'A',
             2 => '2',
             3 => '3',
