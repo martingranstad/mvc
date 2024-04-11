@@ -4,6 +4,8 @@ namespace App\Cards;
 
 class CardHand
 {
+    private array $cards;
+
     /**
      * Constructs card hand. 
      *

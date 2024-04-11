@@ -6,5 +6,26 @@
     <h1>API</h1>
     <h2>/api/quote/</h2>
     <p>Returnerar ett slumpmässigt citat samt datum och tid.</p>
-
+    <h2>GET /api/deck</h2>
+    <p>Returnerar en JSON struktur med hela kortleken sorterad per färg och värde om det finns en kortlek i session.</p>
+    <h2>POST api/deck/shuffle</h2>
+    <p>Blandar kortleken om den finns i session och därefter returnerar en JSON struktur med kortleken. Den blandade kortleken sparas i sessionen.</p>
+    <form method="post" action="">
+    <input type="submit" name="POST api/deck/shuffle" value="POST api/deck/shuffle"
+    onClick="this.form.action='{{ path('api-deck-shuffle') }}';this.form.method='post';"
+    >
+    </form>
+    <h2>POST api/deck/draw och POST api/deck/draw-multiple</h2>
+    <p>Drar 1 eller :number kort från kortleken och visar upp dem i en JSON struktur samt antalet kort som är kvar i kortleken. Kortleken sparas i sessionen.</p>
+    <form method="post" action="">
+    <input type="submit" name="POST api/deck/draw" value="POST api/deck/draw"
+    onClick="this.form.action='{{ path('api-deck-draw') }}';this.form.method='post';"
+    >
+    </form>
+    <form method="post" action="">
+        <input type="number" name="number" value="1">
+        <input type="submit" name="POST api/deck/draw-multiple" value="POST api/deck/draw-mutliple"
+        onClick="this.form.action='{{ path('api-deck-draw-multiple') }}';this.form.method='post';"
+        >
+    </form>
 {% endblock %}

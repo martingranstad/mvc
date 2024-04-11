@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -33,7 +34,7 @@ class CardGameControllerJson
         return $response;
     }
 
-    #[Route("/api/deck/shuffle", methods: ['POST', 'GET'])]
+    #[Route("/api/deck/shuffle", name: "api-deck-shuffle", methods: ['POST'])]
     public function jsonDeckShuffle(
         SessionInterface $session
     ): Response
@@ -58,7 +59,7 @@ class CardGameControllerJson
         return $response;
     }
 
-    #[Route("/api/deck/draw", methods: ['POST', 'GET'])]
+    #[Route("/api/deck/draw", name: "api-deck-draw", methods: ['POST'])]
     public function jsonDeckDraw(
         SessionInterface $session
     ): Response
@@ -86,12 +87,13 @@ class CardGameControllerJson
         return $response;
     }
 
-    #[Route("/api/deck/draw/{number}", methods: ['POST', 'GET'])]
+    #[Route("/api/deck/draw-multiple", name: "api-deck-draw-multiple", methods: ['POST'])]
     public function jsonDeckDrawMultiple(
         SessionInterface $session,
-        int $number
+        Request $request,
     ): Response
     {
+        $number = $request->request->get('number');
         $deck = $session->get("deck");
         if ($deck) {
             $cards = $deck->drawCards($number);

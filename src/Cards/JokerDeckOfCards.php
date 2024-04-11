@@ -8,7 +8,7 @@ use App\Cards\DeckOfCards;
 
 class JokerDeckOfCards extends DeckOfCards
 {
-    protected $cards;
+    protected array $cards;
 
     public function __construct(int $numJokers = 2)
     {

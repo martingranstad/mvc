@@ -14,4 +14,22 @@
             <li><a href="{{ path('card-deck-shuffle') }}">Shuffle</a></li>
         </ul>
     </nav>
+
+
+    <a href="{{ asset('img/Cards.drawio.png') }}">
+        <img src="{{ asset('img/Cards.drawio.png') }}" alt="">
+    </a>
+    <p>
+        Card - Klass för kort med suit och value. Den håller även de möjliga suits och values som statiska konstanter.
+        Det hade förmodligen varit möjligt att lösa det på ett annat sätt så att man skulle kunna skapa kort med andra suits och values som inte ligger kopplat till Card klassen.
+    </p>
+    <p>
+        DeckOfCards - Klass för en kortlek. Den skapar en array med 52 kort och har metoder för att blanda och dra kort. Förhållandet mellan kort och kortleken är komposition då korten skapas i klassen.
+    </p>
+    <p>
+        JokerDeckOfCards - Ärver från DeckOfCards och lägger till valfritt antal jokrar.
+    </p>
+    <p>
+        CardHand - Klass för en hand med kort. Den tar emot en array av kort och jag skulle kalla det aggregation snarare än komposition då korten skapas utanför klassen och inte är direkt beroende av den.
+    </p>
 {% endblock %}
