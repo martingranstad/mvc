@@ -13,8 +13,7 @@ class CardGameControllerJson
     #[Route("/api/deck", methods: ['GET'])]
     public function jsonDeck(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $deck = $session->get("deck");
         if ($deck) {
             $deck->sortDeck();
@@ -37,8 +36,7 @@ class CardGameControllerJson
     #[Route("/api/deck/shuffle", name: "api-deck-shuffle", methods: ['POST'])]
     public function jsonDeckShuffle(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $deck = $session->get("deck");
         if ($deck) {
             $deck->shuffleDeck();
@@ -62,8 +60,7 @@ class CardGameControllerJson
     #[Route("/api/deck/draw", name: "api-deck-draw", methods: ['POST'])]
     public function jsonDeckDraw(
         SessionInterface $session
-    ): Response
-    {
+    ): Response {
         $deck = $session->get("deck");
         if ($deck) {
             $card = $deck->drawCards(1)[0];
@@ -91,8 +88,7 @@ class CardGameControllerJson
     public function jsonDeckDrawMultiple(
         SessionInterface $session,
         Request $request,
-    ): Response
-    {
+    ): Response {
         $number = $request->request->get('number');
         $deck = $session->get("deck");
         if ($deck) {

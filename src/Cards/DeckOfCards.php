@@ -17,7 +17,7 @@ class DeckOfCards
 
         foreach ($suits as $suit) {
             foreach ($values as $value) {
-                if (!($value == 0 || $suit == "")){
+                if (!($value == 0 || $suit == "")) {
                     $this->cards[] = new Card($suit, $value);
                 }
             }
@@ -27,21 +27,24 @@ class DeckOfCards
     /**
      * Shuffles the deck of cards.
      */
-    public function shuffleDeck(): void {
+    public function shuffleDeck(): void
+    {
         shuffle($this->cards);
     }
 
     /**
      * Sort the deck of cards.
      */
-    public function sortDeck(): void {
+    public function sortDeck(): void
+    {
         sort($this->cards);
     }
 
     /**
      * Returns the number of cards in the deck.
      */
-    public function getNumCards(): int {
+    public function getNumCards(): int
+    {
         return count($this->cards);
     }
 
@@ -51,7 +54,8 @@ class DeckOfCards
      * @param int $numCards The number of cards to draw.
      * @return array Array of cards drawn.
      */
-    public function drawCards(int $numCards): array {
+    public function drawCards(int $numCards): array
+    {
         $drawnCards = [];
         for ($i = 0; $i < $numCards; $i++) {
             if (!empty($this->cards)) {
@@ -60,14 +64,15 @@ class DeckOfCards
         }
         return $drawnCards;
     }
-    
+
 
     /**
      * Returns an array of strings representing the cards.
      *
      * @return array Array of strings representing the cards.
      */
-    public function getCardStrings(): array {
+    public function getCardStrings(): array
+    {
         $cardStrings = [];
         foreach ($this->cards as $card) {
             $cardStrings[] = $card->getCardString();

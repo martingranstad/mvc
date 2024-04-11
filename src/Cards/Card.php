@@ -53,7 +53,7 @@ class Card
         $this->suit = $suit;
         $this->value = $value;
 
-        echo ($this->getCardString());
+        echo($this->getCardString());
     }
 
     /**
@@ -63,8 +63,6 @@ class Card
      */
     public function getCardString(): string
     {
-        return "[" . self::VALUES[$this->value] . SELF::SUITS[$this->suit] . "]";
+        return "[" . self::VALUES[$this->value] . self::SUITS[$this->suit] . "]";
     }
 }
-
-    
