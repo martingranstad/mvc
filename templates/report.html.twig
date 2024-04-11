@@ -36,4 +36,35 @@
         Det stora med det det här kursmomentet var mest bara att få fötterna lite blöta med symfony. Jag ser fram emot kommande kmom.
     </p>
 
+    <h2 id="kmom02">Kmom02</h2>
+    <h3>Förklara kort de objektorienterade konstruktionerna arv, komposition, interface och trait och hur de används i PHP.</h3>
+    <p>
+        Arv är när en klass ärver egenskaper och metoder från en förälderklassdel. Det är en is-a relation.
+        Komposition är en har-en relation där en klass innehåller en instans av en annan klass.
+        Interface är ett löfte från en klass att erbjuda vissa metoder.
+        Trait är en samling av medlemsvariabler och metoder som användas för att lägga på funktionalitet på en klass. Det blir en använder relation till klassen.
+    </p>
+
+
+    <h3>Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden och dina klasser?</h3>
+    <p>Jag tycker att min lösning blev ganska bra. Just nu ligger möjliga suits och values på kort i kortklassen. Egentligen skulle man kanske vilja att detta löses på ett annat sätt.
+        Om man exemplevis skulle vilja ha andra suits eller värden än vad som är standard i en kortlek. För API-delen blev jag lite förvirrad vad man ville då det inte går att nå POST via webbläsaren.
+        Jag provade att köra mina routes med curl så att de fungerade och det gick men sedan fick jag förslag att skapa formulär på /api routen vilket jag då gjorde istället.
+        För att inte skicka parametrar via url så skapade jag en separat route /api/deck/draw-mutliple som använde Request istället.
+        Jag gjorde också lite kontroll av vad som gavs för parametrar till min klasskonstruktorer för att se till att rätt värden gavs och kastade annars en beskrivande InvalidArgumentException.
+        Jag tror att det kan vara nyttigt att jobba lite mer på det sättet med att försöka bygga lite stabilare lösningar då det ofta på skoluppgifterna blir att man endast löser exakt den inputen som finns i kraven och hanterar inget när det går fel.
+        Nu var inte detta fullständigt men ett steg i rätt riktning skulle jag tro.
+    </p>
+
+    <h3>Vilka är dina reflektioner så här långt med att jobb i Symfony med applikationskod enligt MVC?</h3>
+    <p>
+        Jag måste säga att det känns trevligt. View och Controller känns som att det är ganska enkelt att jobba med och flödet känns naturligt.
+    </p>
+
+    <h3>Vilken är din TIL för detta kmom?</h3>
+    <p>
+        Det kändes givande att fundera över hur man skulle strukturera klasserna på bästa sätt.
+    </p>
+
+
 {% endblock %}
