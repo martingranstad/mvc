@@ -6,33 +6,31 @@ use InvalidArgumentException;
 
 class Player
 {
-    protected bool $playing; 
-    protected $cardHand;
+    protected bool $playing;
 
     /**
      * Constructor for Player class.
      *
      * @param CardHand $cardHand The players hand of cards.
      */
-    public function __construct(CardHand $cardHand)
+    public function __construct(protected CardHand $cardHand)
     {
         $this->playing = true;
-        $this->cardHand = $cardHand;
     }
 
     /**
      * Get the string representations of the players hand.
      *
-     * @return array Array of strings representing the cards.
+     * @return array<string> Array of strings representing the cards.
      */
-    public function getCardStrings(): string
+    public function getCardStrings(): array
     {
         return $this->cardHand->getCardStrings();
     }
 
     /**
      * Get whether the player is playing.
-     * 
+     *
      * @return bool True if the player is playing, false otherwise.
      */
     public function isPlaying(): bool

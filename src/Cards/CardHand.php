@@ -2,14 +2,19 @@
 
 namespace App\Cards;
 
+use App\Cards\Card;
+
 class CardHand
 {
+    /**
+     * @var Card[]
+     */
     private array $cards;
 
     /**
      * Constructs card hand.
      *
-     * @param array $cards Array of cards that make up the hand. Each element in the array should be an instance of the Card class.
+     * @param array<Card> $cards Array of cards that make up the hand. Each element in the array should be an instance of the Card class.
      * @throws \InvalidArgumentException If any element of the array is not a Card.
      */
     public function __construct(array $cards = [])
@@ -22,15 +27,12 @@ class CardHand
             }
         }
         $this->cards = $cards;
-
-        echo("<br><br>");
-        echo(implode(",", $this->getCardStrings()));
     }
 
     /**
      * Returns an array of strings representing the cards.
      *
-     * @return array Array of strings representing the cards.
+     * @return array<string> Array of strings representing the cards.
      */
     public function getCardStrings(): array
     {

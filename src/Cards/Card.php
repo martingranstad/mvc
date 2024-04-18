@@ -70,9 +70,9 @@ class Card
 
     /**
      * Set the points of the card.
-     * 
+     *
      * @param int $points The points to set.
-     * 
+     *
      * @return void
      */
     public function setPoints(int $points): void
@@ -82,7 +82,7 @@ class Card
 
     /**
      * Get the points of the card.
-     * 
+     *
      * @return int The points of the card.
      */
     public function getPoints(): int

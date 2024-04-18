@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Twenty One{% endblock %}
+
+{% block body %}
+    {{ include('_flash.html.twig') }}
+    <h1>21</h1>
+    <p>
+        Här kan du spela 21.
+    </p>
+    <h2>Your Cards</h2>
+    {% for card in playerCards %}
+        {{ card }}
+    {% endfor %}
+    <h2>Current Score</h2>
+    <p>{{ playerScore }}</p>
+    <h2>What do you want to do?</h2>
+    <form method="post" action="">
+        <input type="submit" name="POST twenty-one/draw-card" value="Draw Card"
+        onClick="this.form.action='{{ path('twenty-one-draw-card') }}';this.form.method='post';"
+        >
+        <input type="submit" name="POST twenty-one/stop-playing" value="Stay"
+        onClick="this.form.action='{{ path('twenty-one-stop-playing') }}';this.form.method='post';"
+        >
+    </form>
+{% endblock %}

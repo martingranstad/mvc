@@ -6,6 +6,9 @@ use App\Cards\Card;
 
 class DeckOfCards
 {
+    /**
+     * @var Card[]
+     */
     protected array $cards;
 
     public function __construct()
@@ -52,7 +55,7 @@ class DeckOfCards
      * Draws a specified number of cards from the deck.
      *
      * @param int $numCards The number of cards to draw.
-     * @return array Array of cards drawn.
+     * @return array<Card> Array of cards drawn.
      */
     public function drawCards(int $numCards): array
     {
@@ -69,7 +72,7 @@ class DeckOfCards
     /**
      * Returns an array of strings representing the cards.
      *
-     * @return array Array of strings representing the cards.
+     * @return array<string> Array of strings representing the cards.
      */
     public function getCardStrings(): array
     {

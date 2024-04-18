@@ -52,6 +52,7 @@ class CardGameController extends AbstractController
     public function cardDeck(
         SessionInterface $session
     ): Response {
+        /** @var JokerDeckOfCards|null $deck */
         $deck = $session->get("deck");
         if (!$deck) {
             $deck = new JokerDeckOfCards();
@@ -70,6 +71,7 @@ class CardGameController extends AbstractController
     public function cardDeckShuffle(
         SessionInterface $session
     ): Response {
+        /** @var JokerDeckOfCards|null $deck */
         $deck = $session->get("deck");
         if (!$deck) {
             $deck = new JokerDeckOfCards();
@@ -89,6 +91,7 @@ class CardGameController extends AbstractController
     public function cardDeckDraw(
         SessionInterface $session
     ): Response {
+        /** @var JokerDeckOfCards|null $deck */
         $deck = $session->get("deck");
         if (!$deck) {
             $deck = new JokerDeckOfCards();
@@ -110,6 +113,7 @@ class CardGameController extends AbstractController
         SessionInterface $session,
         int $number
     ): Response {
+        /** @var JokerDeckOfCards|null $deck */
         $deck = $session->get("deck");
         if (!$deck) {
             $deck = new JokerDeckOfCards();
@@ -117,13 +121,13 @@ class CardGameController extends AbstractController
         }
 
         $cards = $deck->drawCards($number);
-        $card_strings = [];
+        $cardStrings = [];
         foreach ($cards as $card) {
-            $card_strings[] = $card->getCardString();
+            $cardStrings[] = $card->getCardString();
         }
 
         $data = [
-            "deck" => $card_strings,
+            "deck" => $cardStrings,
         ];
 
         return $this->render("cards.html.twig", $data);

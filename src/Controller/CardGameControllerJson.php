@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Cards\JokerDeckOfCards;
+
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,17 +16,22 @@ class CardGameControllerJson
     public function jsonDeck(
         SessionInterface $session
     ): Response {
+        /** @var JokerDeckOfCards|null $deck */
         $deck = $session->get("deck");
         if ($deck) {
             $deck->sortDeck();
             $data = [
                 'deck' => $deck->getCardStrings(),
             ];
-        } else {
-            $data = [
-                'error' => 'No deck found',
-            ];
+            $response = new JsonResponse($data);
+            $response->setEncodingOptions(
+                $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            );
+            return $response;
         }
+        $data = [
+            'error' => 'No deck found',
+        ];
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
@@ -37,6 +44,7 @@ class CardGameControllerJson
     public function jsonDeckShuffle(
         SessionInterface $session
     ): Response {
+        /** @var JokerDeckOfCards|null $deck */
         $deck = $session->get("deck");
         if ($deck) {
             $deck->shuffleDeck();
@@ -44,11 +52,15 @@ class CardGameControllerJson
             $data = [
                 'deck' => $deck->getCardStrings(),
             ];
-        } else {
-            $data = [
-                'error' => "No deck in session",
-            ];
+            $response = new JsonResponse($data);
+            $response->setEncodingOptions(
+                $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            );
+            return $response;
         }
+        $data = [
+            'error' => "No deck in session",
+        ];
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
@@ -61,6 +73,7 @@ class CardGameControllerJson
     public function jsonDeckDraw(
         SessionInterface $session
     ): Response {
+        /** @var JokerDeckOfCards|null $deck */
         $deck = $session->get("deck");
         if ($deck) {
             $card = $deck->drawCards(1)[0];
@@ -70,12 +83,16 @@ class CardGameControllerJson
                 "Card left in deck" => $deck->getNumCards(),
             ];
 
+            $response = new JsonResponse($data);
+            $response->setEncodingOptions(
+                $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            );
+            return $response;
 
-        } else {
-            $data = [
-                'error' => $session->all(),
-            ];
         }
+        $data = [
+            'error' => $session->all(),
+        ];
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(
@@ -90,24 +107,30 @@ class CardGameControllerJson
         Request $request,
     ): Response {
         $number = $request->request->get('number');
+        $number = (int) $number;
+        /** @var JokerDeckOfCards|null $deck */
         $deck = $session->get("deck");
         if ($deck) {
             $cards = $deck->drawCards($number);
-            $card_strings = [];
+            $cardStrings = [];
             foreach ($cards as $card) {
-                $card_strings[] = $card->getCardString();
+                $cardStrings[] = $card->getCardString();
             }
 
             $data = [
-                "Drawn cards" => $card_strings,
+                "Drawn cards" => $cardStrings,
                 "Card left in deck" => $deck->getNumCards(),
             ];
+            $response = new JsonResponse($data);
+            $response->setEncodingOptions(
+                $response->getEncodingOptions() | JSON_PRETTY_PRINT
+            );
+            return $response;
 
-        } else {
-            $data = [
-                'error' => $session->all(),
-            ];
         }
+        $data = [
+            'error' => $session->all(),
+        ];
 
         $response = new JsonResponse($data);
         $response->setEncodingOptions(

@@ -12,11 +12,11 @@ class Kmom01ControllerTwig extends AbstractController
     public function number(): Response
     {
         $number = random_int(0, 100);
-        $random_color = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+        $randomColor = '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
 
         $data = [
             'number' => $number,
-            'color' => $random_color,
+            'color' => $randomColor,
         ];
 
         return $this->render('lucky_number.html.twig', $data);
