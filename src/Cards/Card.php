@@ -8,6 +8,7 @@ class Card
 {
     private string $suit;
     private int $value;
+    private int $points;
     public const SUITS = [
         'H' => '♥',
         'C' => '♣',
@@ -52,6 +53,7 @@ class Card
 
         $this->suit = $suit;
         $this->value = $value;
+        $this->points = $value;
 
         echo($this->getCardString());
     }
@@ -64,5 +66,17 @@ class Card
     public function getCardString(): string
     {
         return "[" . self::VALUES[$this->value] . self::SUITS[$this->suit] . "]";
+    }
+
+    /**
+     * Set the points of the card.
+     * 
+     * @param int $points The points to set.
+     * 
+     * @return void
+     */
+    public function setPoints(int $points): void
+    {
+        $this->points = $points;
     }
 }
