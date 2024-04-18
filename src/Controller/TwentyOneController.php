@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class BlackJackController extends AbstractController
+class TwentyOneController extends AbstractController
 {
     #[Route("/game", name: "game")]
     public function game(): Response
@@ -14,8 +14,8 @@ class BlackJackController extends AbstractController
         return $this->render('game.html.twig');
     }
 
-    #[Route("/black-jack", name: "black-jack")]
-    public function blackJack(): Response
+    #[Route("/twenty-one", name: "twenty-one")]
+    public function twentyOne(): Response
     {
         return $this->render('game.html.twig');
     }
