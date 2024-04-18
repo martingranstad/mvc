@@ -1,0 +1,11 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Game{% endblock %}
+
+{% block body %}
+    <h1>Black Jack</h1>
+    <p>
+        Här kan du spela Black Jack.
+        <a href="{{ path('black-jack') }}">New Game</a>
+    </p>
+{% endblock %}
