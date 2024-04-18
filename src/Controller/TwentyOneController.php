@@ -14,6 +14,11 @@ class TwentyOneController extends AbstractController
         return $this->render('game.html.twig');
     }
 
+    #[Route("/game/doc", name: "game-doc")]
+    public function gameDoc(): Response
+    {
+        return $this->render('game-doc.html.twig');
+    }
     #[Route("/twenty-one", name: "twenty-one")]
     public function twentyOne(): Response
     {
