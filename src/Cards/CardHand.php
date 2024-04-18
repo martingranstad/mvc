@@ -12,11 +12,13 @@ class CardHand
      * @param array $cards Array of cards that make up the hand. Each element in the array should be an instance of the Card class.
      * @throws \InvalidArgumentException If any element of the array is not a Card.
      */
-    public function __construct(array $cards)
+    public function __construct(array $cards = [])
     {
-        foreach ($cards as $card) {
-            if (!$card instanceof Card) {
-                throw new \InvalidArgumentException('Invalid card in the array.');
+        if (!empty($cards)) {
+            foreach ($cards as $card) {
+                if (!$card instanceof Card) {
+                    throw new \InvalidArgumentException('Invalid card in the array.');
+                }
             }
         }
         $this->cards = $cards;
