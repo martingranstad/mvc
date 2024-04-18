@@ -79,4 +79,14 @@ class Card
     {
         $this->points = $points;
     }
+
+    /**
+     * Get the points of the card.
+     * 
+     * @return int The points of the card.
+     */
+    public function getPoints(): int
+    {
+        return $this->points;
+    }
 }
