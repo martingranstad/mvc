@@ -52,4 +52,14 @@ class CardHand
         }
         return $totalPoints;
     }
+
+    /**
+     * Adds a card to the hand.
+     *
+     * @param Card $card Card to add to the hand.
+     */
+    public function addCard(Card $card): void
+    {
+        $this->cards[] = $card;
+    }
 }
