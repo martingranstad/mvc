@@ -39,4 +39,17 @@ class CardHand
         return $cardStrings;
     }
 
+    /**
+     * Returns the total points of the hand.
+     *
+     * @return int Total points of the hand.
+     */
+    public function getTotalPoints(): int
+    {
+        $totalPoints = 0;
+        foreach ($this->cards as $card) {
+            $totalPoints += $card->getPoints();
+        }
+        return $totalPoints;
+    }
 }
