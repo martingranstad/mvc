@@ -66,5 +66,50 @@
         Det kändes givande att fundera över hur man skulle strukturera klasserna på bästa sätt.
     </p>
 
+    <h2 id="kmom03">Kmom03</h2>
+    <h3>Berätta hur det kändes att modellera ett kortspel med flödesdiagram och psuedokod. Var det något som du tror stödjer dig i din problemlösning och tankearbete för att strukturera koden kring en applikation?</h3>
+    <p>
+        Jag tycker att det är ganska trevligt faktiskt. Något jag lagt märke till är att jag nästan tycker att det
+        är lättare att utföra detta skede med papper och penna snarare än på datorn. Att sitta och mecka med någon
+        programvara för att rita flödesdiagramet känns som att det blir lite jobbigare att göra. Har dock blivit bättre
+        med draw.io nu för att rita UML och flödesdiagram vilket gör att det känns mer naturligt jämfört med första gångerna jag skulle göra det.
+        Jag följde kanske inte strukturen helt för hur psuedokoden skulle se ut utan gick kanske lite mer mot naturligtspråk än
+        vad exemplena visade. Jag tycker dock att det uppfyllde sin funktion.
+
+    <h3>Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, vilken förbättringspotential ser du i din koden, dina klasser och applikationen som helhet?</h3>
+    <p>
+        Jag är lite osäker kring om mitt sätt att hantera spelaren i relation till spelet var det bästa sättet.
+        Hade det varit ett konsolprogram hade jag förmodligen gjort det lite annorlunda men nu byggde jag routes
+        som gick att nå med knapparna på spelsidan där spelaren drog kort och slutade spela. Jag vet inte om lite
+        för mycket logik kod möjligen hamnade i controllern här. I TwentyOneGame klassen kollade jag sedan bara om spelaren
+        var klar eller inte.
+    </p>
+    <p>
+        Jag gjorde först en implementation där jag inte hade någon klass gör själva spelet utan endast för spelarna.
+        Detta resulterade i alldeles för mycket kod i controllern så jag valde att göra om det och skapa en TwentyOneGame klass.
+        Jag kunde dock använda det mesta av det jag gjort innan fast bara flytta runt det lite. Det som gjorde det mycket enklare
+        var att jag då kunde spara endast en instans av spelet i sessionen och inte en instans för spelare,bank och kortlek.
+    </p>
+    <p>
+        Jag är osäker på om jag tänkt rätt angående dependecy injections.
+        Jag ser till att för konstruktorn av TwentyOneGame så skickar jag in instanser av Player, Bank och Deck istället för att skapa dem i konstruktorn.
+        Jag skapar dock bara instansen av TwentyOneGame med new TwentyOneGame(new Player(new CardHand()), new Bank(new CardHand()), new Deck());
+        Jag antar att det då inte gör någon större skillnad egentligen. Här borde jag förmodligen nästa gång använda mig av ett interface nästa gång
+        för att jag ska få någon potentiell nytta av dependecy injections.
+    </p>
+
+    <h3>Vilken är din känsla för att koda i ett ramverk som Symfony, så här långt in i kursen?</h3>
+    <p>
+        Inga konstigheter än så länge. Jag tycker att det är ganska lättarbetat och inget som är ivägen.
+        Det är trevligt att arbeta med session i symfony.
+        Jag tycker även att faktum att man i php kan skicka in hela objekt i session jämfört med python där man
+        måste serialisera objekt är en stor fördel.
+    </p>
+
+    <h3>Vilken är din TIL för detta kmom?</h3>
+    <p>
+        Att arbeta med hela problemlösningsflödet är kul. Både att tänka generellt och att passa in det till miljön man arbetar i.
+    </p>
+
 
 {% endblock %}
