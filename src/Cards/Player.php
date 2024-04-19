@@ -7,6 +7,7 @@ use InvalidArgumentException;
 class Player
 {
     protected bool $playing;
+    protected int $totalPoints;
 
     /**
      * Constructor for Player class.
@@ -15,6 +16,17 @@ class Player
      */
     public function __construct(protected CardHand $cardHand)
     {
+        $this->total_points = 0;
+        $this->playing = true;
+    }
+
+    /**
+     * Reset player
+     */
+    public function reset(): void
+    {
+        $this->cardHand = new CardHand();
+        $this->totalPoints = 0;
         $this->playing = true;
     }
 
@@ -43,6 +55,7 @@ class Player
      */
     public function stopPlaying(): void
     {
+        $this->totalPoints = $this->getTotalPoints();
         $this->playing = false;
     }
 
@@ -54,6 +67,7 @@ class Player
     public function addCard(Card $card): void
     {
         $this->cardHand->addCard($card);
+        $this->totalPoints = $this->getTotalPoints();
     }
 
     /**

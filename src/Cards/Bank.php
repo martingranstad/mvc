@@ -15,7 +15,7 @@ class Bank extends Player
      */
     public function __construct(protected CardHand $cardHand)
     {
-        $this->playing = true;
+        parent::__construct($cardHand);
     }
 
     /**
@@ -25,8 +25,11 @@ class Bank extends Player
      *
      * @return int Total points of the hand.
      */
-    public function play($deck): int
+    public function playAndReturnPoints($deck): int
     {
+        if (!$this->isPlaying()) {
+            return $this->cardHand->getTotalPoints();
+        }
         while ($this->cardHand->getTotalPoints() < 17) {
             $this->cardHand->addCard($deck->drawCards(1)[0]);
         }

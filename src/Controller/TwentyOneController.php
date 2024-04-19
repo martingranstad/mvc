@@ -7,6 +7,7 @@ use App\Cards\CardHand;
 use App\Cards\DeckOfCards;
 use App\Cards\Player;
 use App\Cards\Bank;
+use App\Cards\TwentyOneGame;
 
 use Exception;
 
@@ -33,68 +34,33 @@ class TwentyOneController extends AbstractController
         SessionInterface $session
     ): Response {
 
-        /** @var DeckOfCards|null $deck */
-        $deck = $session->get("deck");
-        if (!$deck) {
-            $deck = new DeckOfCards();
-            $deck->shuffleDeck();
-            $session->set("deck", $deck);
+        /** @var TwentyOneGame|null $game */
+        $game = $session->get("game");
+        if (!$game) {
+            $game = new TwentyOneGame(new Player(new CardHand()), new Bank(new CardHand()), new DeckOfCards());
+            $session->set("game", $game);
         }
 
-        /** @var Player|null $player */
-        $player = $session->get("player");
-
-        if (!$player) {
-            $player = new Player(new CardHand());
-            $session->set("player", $player);
-        }
-
-        if ($player->getTotalPoints() > 21) {
-            //Redirect to game over
+        if ($game->isGameOver()) {
             $this->addFlash(
                 'notice',
-                'Du fick över 21 och förlorade!'
+                $game->getMessage()
             );
 
             return $this->redirectToRoute('game-over');
         }
 
-        if (!$player->isPlaying()) {
-            $dealer = new Bank(new CardHand());
-
-            $dealer->play($deck);
-
-            $session->set("dealer", $dealer);
-
-
-            if ($dealer->getTotalPoints() > 21) {
-                $this->addFlash(
-                    'notice',
-                    'Banken fick över 21 och förlorade! Grattis du vann!'
-                );
-
-                return $this->redirectToRoute('game-over');
-            }
-            if ($dealer->getTotalPoints() >= $player->getTotalPoints()) {
-                $this->addFlash(
-                    'notice',
-                    'Banken fick mer eller samma som dig och vann därför. Bättre lycka nästa gång!'
-                );
-
-                return $this->redirectToRoute('game-over');
-            }
+        $gameResult = $game->playGame();
+        if ($gameResult) {
             $this->addFlash(
                 'notice',
-                'Du fick mer poäng än banken och vann! Grattis!'
+                $gameResult['message']
             );
-
+            $session->set("gameResult", $gameResult);
             return $this->redirectToRoute('game-over');
         }
 
-        return $this->render('twenty-one.html.twig', [
-            "playerCards" => $player->getCardStrings(),
-            "playerScore" => $player->getTotalPoints(),
-        ]);
+        return $this->render('twenty-one.html.twig', $game->getPlayerHand());
     }
 
     //Post route that adds a card from the deck in session to the player in the session
@@ -103,22 +69,14 @@ class TwentyOneController extends AbstractController
         SessionInterface $session
     ): Response {
         /** @var DeckOfCards|null $deck */
-        $deck = $session->get("deck");
-        if (!$deck) {
-            throw new Exception("No deck in session");
+        $game = $session->get("game");
+        if (!$game) {
+            throw new Exception("No game in session");
         }
-        /** @var Player|null $player */
-        $player = $session->get("player");
-        if (!$player) {
-            throw new Exception("No player in session");
-        }
-
-        $player->addCard($deck->drawCards(1)[0]);
-        $session->set("player", $player);
-        $session->set("deck", $deck);
+        $game->givePlayerCard();
         $this->addFlash(
             'notice',
-            'Du drog ett kort!'
+            $game->getMessage()
         );
         return $this->redirectToRoute("twenty-one");
     }
@@ -128,17 +86,14 @@ class TwentyOneController extends AbstractController
     public function stopPlaying(
         SessionInterface $session
     ): Response {
-        /** @var Player|null $player */
-        $player = $session->get("player");
-        if (!$player) {
-            throw new Exception("No player in session");
+        $game = $session->get("game");
+        if (!$game) {
+            throw new Exception("No game in session");
         }
-
-        $player->stopPlaying();
-        $session->set("player", $player);
+        $game->stopPlayerPlaying();
         $this->addFlash(
             'notice',
-            'Du slutade spela! Nu är det dealerns tur.'
+            $game->getMessage()
         );
         return $this->redirectToRoute("twenty-one");
     }
@@ -148,15 +103,11 @@ class TwentyOneController extends AbstractController
     public function gameOver(
         SessionInterface $session
     ): Response {
-        /** @var Player|null $player */
-        $player = $session->get("player");
-        /** @var Bank|null $dealer */
-        $dealer = $session->get("dealer");
-
+        $gameResult = $session->get("gameResult");
+        if (!$gameResult) {
+            throw new Exception("No game result in session");
+        }
         $session->clear();
-        return $this->render('game-over.html.twig', [
-            "playerCards" => $player ? $player->getCardStrings() : [],
-            "dealerCards" => $dealer ? $dealer->getCardStrings() : [],
-        ]);
+        return $this->render('game-over.html.twig', $gameResult);
     }
 }
