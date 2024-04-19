@@ -3,6 +3,7 @@
 namespace App\Cards;
 
 use App\Cards\Card;
+use InvalidArgumentException;
 
 class CardHand
 {
@@ -22,7 +23,7 @@ class CardHand
         if (!empty($cards)) {
             foreach ($cards as $card) {
                 if (!$card instanceof Card) {
-                    throw new \InvalidArgumentException('Invalid card in the array.');
+                    throw new InvalidArgumentException('Invalid card in the array.');
                 }
             }
         }

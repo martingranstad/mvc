@@ -27,17 +27,17 @@ class TwentyOneGame
     /**
      * Play a game of 21.
      *
-     * @return string The result of the game. If the player is still playing it returns null
+     * @return array{message: string, playerHand: array<string>, bankHand: array<string>}|null The result of the game. If the player is still playing it returns null.
      */
     public function playGame(): array|null
     {
         if ($this->gameOver) {
             return array("message" => $this->message,
-                "playerHand" => $player->getCardStrings(),
-                "bankHand" => $bank->getCardStrings());
+                "playerHand" => $this->player->getCardStrings(),
+                "bankHand" => $this->bank->getCardStrings());
         }
         if ($this->player->getTotalPoints() > 21) {
-            $gameOver = true;
+            $this->gameOver = true;
             $this->message = "You got over 21 and lost!";
             return array("message" => $this->message,
                 "playerHand" => $this->player->getCardStrings(),
@@ -46,7 +46,7 @@ class TwentyOneGame
         if (!$this->player->isPlaying()) {
             $bankPoints = $this->bank->playAndReturnPoints($this->deck);
 
-            $gameOver = true;
+            $this->gameOver = true;
             if ($bankPoints > 21) {
                 $this->message = "The bank got over 21 and you won!";
                 return array("message" => $this->message,
@@ -69,7 +69,7 @@ class TwentyOneGame
 
     /**
      * Returns true if the game is over, false otherwise.
-     * 
+     *
      * @return bool True if the game is over, false otherwise.
      */
     public function isGameOver(): bool
@@ -79,7 +79,7 @@ class TwentyOneGame
 
     /**
      * Return game over message.
-     * 
+     *
      * @return string Game over message.
      */
     public function getMessage(): string
@@ -89,18 +89,18 @@ class TwentyOneGame
 
     /**
      * Gets the players score and hand.
-     * 
-     * @return array<string> The players score and hand.
+     *
+     * @return array{playerHand: array<string>, playerScore: int} The players score and hand.
      */
     public function getPlayerHand(): array
     {
-        return array("playerCards" => $this->player->getCardStrings(),
+        return array("playerHand" => $this->player->getCardStrings(),
             "playerScore" => $this->player->getTotalPoints());
     }
 
     /**
      * Draws a card from the deck and adds it to the players hand.
-     * 
+     *
      * @return void
      */
     public function givePlayerCard(): void
@@ -111,7 +111,7 @@ class TwentyOneGame
 
     /**
      * Stops the player from playing.
-     * 
+     *
      * @return void
      */
     public function stopPlayerPlaying(): void

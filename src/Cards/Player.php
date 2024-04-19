@@ -16,7 +16,7 @@ class Player
      */
     public function __construct(protected CardHand $cardHand)
     {
-        $this->total_points = 0;
+        $this->totalPoints = 0;
         $this->playing = true;
     }
 

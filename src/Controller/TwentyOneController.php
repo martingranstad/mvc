@@ -68,7 +68,7 @@ class TwentyOneController extends AbstractController
     public function drawCard(
         SessionInterface $session
     ): Response {
-        /** @var DeckOfCards|null $deck */
+        /** @var TwentyOneGame|null $game */
         $game = $session->get("game");
         if (!$game) {
             throw new Exception("No game in session");
@@ -86,6 +86,7 @@ class TwentyOneController extends AbstractController
     public function stopPlaying(
         SessionInterface $session
     ): Response {
+        /** @var TwentyOneGame|null $game */
         $game = $session->get("game");
         if (!$game) {
             throw new Exception("No game in session");
@@ -103,6 +104,7 @@ class TwentyOneController extends AbstractController
     public function gameOver(
         SessionInterface $session
     ): Response {
+        /** @var array<string>|null $gameResult */
         $gameResult = $session->get("gameResult");
         if (!$gameResult) {
             throw new Exception("No game result in session");
