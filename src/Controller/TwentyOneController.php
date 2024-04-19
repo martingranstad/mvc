@@ -12,6 +12,7 @@ use App\Cards\TwentyOneGame;
 use Exception;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -111,5 +112,24 @@ class TwentyOneController extends AbstractController
         }
         $session->clear();
         return $this->render('game-over.html.twig', $gameResult);
+    }
+
+    //Route for api/game that shows the current game state
+    #[Route("/api/game", name: "api-game", methods: ['GET'])]
+    public function apiGame(
+        SessionInterface $session
+    ): Response {
+        /** @var TwentyOneGame|null $game */
+        $game = $session->get("game");
+        if (!$game) {
+            throw new Exception("No game in session");
+        }
+        $data = $game->getGameState();
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
     }
 }

@@ -119,4 +119,19 @@ class TwentyOneGame
         $this->player->stopPlaying();
         $this->message = "You stopped playing, now it's the banks turn!";
     }
+
+    /**
+     * Get game state.
+     *
+     * @return array{playerHand: array<string>, playerScore: int, bankHand: array<string>, bankScore: int, gameOver: bool, message: string} The game state.
+     */
+    public function getGameState(): array
+    {
+        return array("playerHand" => $this->player->getCardStrings(),
+            "playerScore" => $this->player->getTotalPoints(),
+            "bankHand" => $this->bank->getCardStrings(),
+            "bankScore" => $this->bank->getTotalPoints(),
+            "gameOver" => $this->gameOver,
+            "message" => $this->message);
+    }
 }
