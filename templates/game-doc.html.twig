@@ -4,4 +4,33 @@
 
 {% block body %}
     <h1>Dokumentation för Game</h1>
+
+    <h2>Psuedokod för hur banken spelar</h2>
+    <pre>
+       BEGIN
+            IF bank is not playing
+                RETURN bank points
+            END IF
+
+            WHILE bank score < 17
+                Add Card to the banks CardHand from Deck
+                by CALL Deck.drawCard
+            END WHILE
+            stop bank from playing
+            RETURN bank points
+       END 
+    </pre>
+
+    <h2>Flowchart för spelet</h2>
+    <img src="{{ asset('img/21flow.drawio.png') }}" alt="Flowchart for the game 21">
+
+    <h2>Klasser</h2>
+    <pre>
+        Game - Grund klassen som hanterar spelet, spelare, status.
+        Player - Klassen som hanterar spelarens CardHand och poäng.
+        Bank - Ärver från Player och har en egen metod för att spela.
+        Card - Klassen som hanterar korten.
+        Deck - Klassen som hanterar kortleken.
+        CardHand - Klassen som hanterar en hand av kort.
+    </pre>
 {% endblock %}
