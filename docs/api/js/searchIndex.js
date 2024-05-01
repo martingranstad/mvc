@@ -3,7 +3,7 @@ Search.appendIndex(
                 {
             "fqsen": "\\App\\Cards\\Bank",
             "name": "Bank",
-            "summary": "",
+            "summary": "Bank\u0020class\u0020represents\u0020the\u0020bank\u0020in\u0020a\u0020game\u0020of\u002021.",
             "url": "classes/App-Cards-Bank.html"
         },                {
             "fqsen": "\\App\\Cards\\Bank\u003A\u003A__construct\u0028\u0029",
@@ -140,6 +140,11 @@ Search.appendIndex(
             "name": "getCardStrings",
             "summary": "Returns\u0020an\u0020array\u0020of\u0020strings\u0020representing\u0020the\u0020cards.",
             "url": "classes/App-Cards-DeckOfCards.html#method_getCardStrings"
+        },                {
+            "fqsen": "\\App\\Cards\\DeckOfCards\u003A\u003AgetCards\u0028\u0029",
+            "name": "getCards",
+            "summary": "Returns\u0020the\u0020cards\u0020in\u0020the\u0020deck.",
+            "url": "classes/App-Cards-DeckOfCards.html#method_getCards"
         },                {
             "fqsen": "\\App\\Cards\\DeckOfCards\u003A\u003A\u0024cards",
             "name": "cards",

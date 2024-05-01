@@ -4,6 +4,10 @@ namespace App\Cards;
 
 use App\Cards\Player;
 
+/**
+ * Bank class represents the bank in a game of 21.
+ * Extends the Player class.
+ */
 class Bank extends Player
 {
     protected bool $playing;

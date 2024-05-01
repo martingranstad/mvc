@@ -83,5 +83,14 @@ class DeckOfCards
         return $cardStrings;
     }
 
+    /**
+     * Returns the cards in the deck.
+     *
+     * @return array<Card> The cards in the deck.
+     */
+    public function getCards(): array
+    {
+        return $this->cards;
+    }
 
 }
