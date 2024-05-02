@@ -111,5 +111,57 @@
         Att arbeta med hela problemlösningsflödet är kul. Både att tänka generellt och att passa in det till miljön man arbetar i.
     </p>
 
+    <h2 id="kmom04">Kmom04</h2>
+    <h3>
+        Berätta hur du upplevde att skriva kod som testar annan kod med PHPUnit och hur du upplever phpunit rent allmänt.
+    </h3>
+    <p>
+        Än så länge upplever jag det som ganska likt hur vi jobbade med tester i oopython-kursen. Jag tycker att det känns som en bra ide att arbeta med
+        testerna antingen på med ett TDD tänk eller iallafall skriva testerna mer kontinuerligt. Fördelarna upplevs inte som riktigt lika stora när det skrivs i efterhand.
+        Men det är förmodligen bättre att skriva testerna sent än aldrig. Arbetar jag vidare med koden nu så kan jag vara fortsatt försäkrad om att den nuvarande funktionaliteten består.
+    </p>
+    <h3>
+        Hur väl lyckades du med kodtäckningen av din kod, lyckades du nå mer än 90% kodtäckning?
+    </h3>
+    <p>
+        Jag nöjde mig vid 91% kodtäckning. Det fanns några enkla metoder till att testa men jag nöjde mig där.
+    </p>
+
+    <h3>
+        Upplever du din egen kod som “testbar kod” eller finns det delar i koden som är mer eller mindre testbar och finns det saker som kan göras för att förbättra kodens testbarhet?
+    </h3>
+    <p>
+        Jag tycker att det är lite svårt att veta hur vissa delar skulle testas. Exempelvis en sortering av kortleken.
+        Om den endast sorteras enligt sort($this->cards) så blir testet av det lite konstigt kan jag tycka. Jag vet inte om jag borde hårdkoda i testet exakt
+        den ordningen jag vill ha av mina kort likt [[A of spades], [A of hearts] ...]. 
+        Jag har försökt jobba mycket med dependecy injections vilket jag tror har gjort koden mer testbar. 
+    </p>
+
+    <h3>
+        Valde du att skriva om delar av din kod för att förbättra den eller göra den mer testbar, om så berätta lite hur du tänkte.
+    </h3>
+    <p>
+        Jag lade till lite kod när det kom till getters. Jag frågade om det i chatten också och lärde mig att det är lite gråskala på om det är något som strikt bör undvikas eller inte.
+        Men nu är det gjort och får vara så tillsvidare så ska jag fundera igenom det lite extra nästa gång det uppstår. Jag tror nog att det vid vissa tillfällen hade lite med att göra gettern förmodligen var ett ganska naturlig del av api:t som ännu inte använts.
+    </p>
+
+    <h3>
+        Fundera över om du anser att testbar kod är något som kan identifiera “snygg och ren kod”.
+    </h3>
+    <p>
+        En del av designprinciperna som dependency injections förenklar åtminstone testning. Jag tror att om man arbeta med att skriva tester ofta så borde
+        det kunna hjälpa att se till att man skriver den koden som faktiskt behövs och kanske förtydligar och delar upp koden på ett bättre sätt.
+        Det är också rimligt att tänka sig att kod faktiskt måste vara testbar för att den ska fungera i stor skala och att "snygg och ren" kod då faktiskt
+        i någon mån definieras av att den är testbar. Alltså kod kan endast klassas som snygg och ren om den är testbar.
+    </p>
+
+    <h3>
+        Vilken är din TIL för detta kmom?
+    </h3>
+    <p>
+        Övning med enhetstester. Jag vill bli bättre på det och arbeta med det mer kontinuerligt.
+    </p>
+
+
 
 {% endblock %}
