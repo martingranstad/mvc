@@ -162,6 +162,42 @@
         Övning med enhetstester. Jag vill bli bättre på det och arbeta med det mer kontinuerligt.
     </p>
 
+    <h2 id="kmom05">Kmom05</h2>
+
+
+
+    <h3>Gick det bra att jobba igenom övningen med Symfony och Doctrine. Något särskilt du tänkte/reagerade på under övningen?</h3>
+    <p>
+        Jag tycker att det flöt på bra. Jag har tidigare arbetat med django där man på ett liknande sätt jobbar med att skapa migrations och sedan köra dem.
+        Jag valde att använda sqlite3 för att göra det så enkelt som möjligt med setup osv.
+    </p>
+
+    <h3>Berätta om din applikation och hur du tänkte när du byggde upp den. Tänkte du något speciellt på användargränssnittet?</h3>
+    <p>
+        Min design bev ganska lik hur min eshop såg ut i databaskursen. På landningssidan visas alla böcker i en tabell med länkar för att uppdatera och ta bort varje enskild bok.
+        Det går också att klicka på titeln för att visa upp en enskild bok. Jag valde att använda samma twig template för att visa upp en enskild bok som för att visa upp alla böcker.
+        Sedan finns det en separat länk för att skapa en ny bok.
+        Jag styleade inte mina forms något vilket hade kunnat vara en förbättring för att det skulle se snyggare ut. Men flödet fungerar annars ganska bra tror jag.
+    </p>
+
+    <h3>Gick det bra att jobba med ORM i CRUD eller vad anser du om det, jämför gärna med andra sätt att jobba med databaser?</h3>
+    <p>
+        Jämfört med hur vi arbetade i databaskursen så upplevdes detta som betydligt mer lättiillgängligt. 
+        Det krävdes avsevärt mindre fixande för att få något så enkelt som CRUD att fungera. Det blir dock givetvis lite mer av magi känslan där det 
+        kanske är lätthänt att man inte förstår hur varje steg går till då en hel del genereras automatiskt.
+    </p>
+
+    <h3>Vad är din uppfattning om ORM så här långt och relatera gärna till andra sätt att jobba med applikationskod mot databaser?</h3>
+    <p>
+        Att arbeta med en ORM förenklar saker och ting. Det blir färre steg och mindre tidskrävande än att arbeta med procedurer sparade i databasen.
+        Eftersom att det är möjligt att lägga till egna querys till ett repository så verkar flexibiliteten vara ganska stor också.
+        Att det blir mindre bundet till en specifik databas är också en fördel.
+
+    <h3>Vilken är din TIL för detta kmom?</h3>
+    <p>
+        Att se likheter och skillnader för hur ORM ser ut i symfony jämfört med django var intressant.
+    </p>
+
 
 
 {% endblock %}
