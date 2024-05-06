@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Show books{% endblock %}
+
+{% block body %}
+    <h1>Books</h1>
+    <table>
+        <tr>
+            <th>Titel</th>
+            <th>Author</th>
+            <th>ISBN</th>
+            <th>Image</th>
+        </tr>
+        {% for book in books %}
+            <tr>
+                <td><a href="{{ path('show_book', {'isbn': book.isbn}) }}">{{ book.titel }}</a></td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.isbn }}</td>
+                <td><img src="{{ book.image }}" alt="{{ book.titel }}" width="100"></td>
+                <td>
+                    <a href="{{ path('update_book', {'isbn': book.isbn}) }}">Update</a>
+                    <a href="{{ path('delete_book', {'isbn': book.isbn}) }}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p>
+        Here are all the books in the library. You can press the title to see more information about the book and update/delete it.
+    </p>
+    <a href="{{ path('create_book') }}">Create new book</a>
+{% endblock %}

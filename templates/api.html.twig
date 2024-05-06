@@ -30,4 +30,10 @@
     </form>
     <h2>GET api/game</h2>
     <p>Returnerar en JSON struktur med spelet 21 om det finns ett spel i session.</p>
+
+    <h2>GET <a href="{{ path('api_books') }}">api/library/books</a></h2>
+    <p>Returnerar en JSON struktur med alla böcker.</p>
+
+    <h2>GET <a href="{{ path('api_book', {'isbn': 'qqqqqqqqqqqqq'}) }}">api/library/book/isbn</a></h2>
+    <p>Returnerar en JSON struktur med en bok utifrån givet ISBN.</p>
 {% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Create book{% endblock %}
+
+{% block body %}
+    <form method="post" action="">
+        <label for="titel">Titel:</label>
+        <input type="text" name="titel" maxlength="255">
+        <label for="author">Author:</label>
+        <input type="text" name="author" maxlength="255">
+        <label for="isbn">ISBN:</label>
+        <input type="text" name="isbn" minlength="13" maxlength="13">
+        <label for="image">Image url:</label>
+        <input type="text" name="image" maxlength="2048">
+        <input type="submit" name="POST library/create_book_post" value="Create book"
+        onClick="this.form.action='{{ path('create_book_post') }}';this.form.method='post';"
+        >
+    </form>
+{% endblock %}
