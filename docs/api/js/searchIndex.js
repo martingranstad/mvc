@@ -236,6 +236,11 @@ Search.appendIndex(
             "summary": "Play\u0020a\u0020game\u0020of\u002021.",
             "url": "classes/App-Cards-TwentyOneGame.html#method_playGame"
         },                {
+            "fqsen": "\\App\\Cards\\TwentyOneGame\u003A\u003AplayBank\u0028\u0029",
+            "name": "playBank",
+            "summary": "Plays\u0020the\u0020bank\u0020part,\u0020sets\u0020message\u0020and\u0020game\u0020over.\u0020Returns\u0020an\u0020array\u0020with\u0020the\u0020result.",
+            "url": "classes/App-Cards-TwentyOneGame.html#method_playBank"
+        },                {
             "fqsen": "\\App\\Cards\\TwentyOneGame\u003A\u003AisGameOver\u0028\u0029",
             "name": "isGameOver",
             "summary": "Returns\u0020true\u0020if\u0020the\u0020game\u0020is\u0020over,\u0020false\u0020otherwise.",
@@ -395,6 +400,11 @@ Search.appendIndex(
             "name": "report",
             "summary": "",
             "url": "classes/App-Controller-Kmom01ControllerTwig.html#method_report"
+        },                {
+            "fqsen": "\\App\\Controller\\Kmom01ControllerTwig\u003A\u003Ametrics\u0028\u0029",
+            "name": "metrics",
+            "summary": "",
+            "url": "classes/App-Controller-Kmom01ControllerTwig.html#method_metrics"
         },                {
             "fqsen": "\\App\\Controller\\Kmom01ControllerTwig\u003A\u003Aapi\u0028\u0029",
             "name": "api",

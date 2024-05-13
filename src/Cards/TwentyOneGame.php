@@ -51,7 +51,7 @@ class TwentyOneGame
 
     /**
      * Plays the bank part, sets message and game over. Returns an array with the result.
-     * 
+     *
      * @return array{message: string, playerHand: array<string>, bankHand: array<string>} The result of the game.
      */
     public function playBank(): array

@@ -112,7 +112,23 @@
     </p>
 
 
+    <img src="{{ asset('img/playGame-before.png') }}" alt="">
+    <img src="{{ asset('img/playGame-after.png') }}" alt="">
+    <img src="{{ asset('img/twentyOneGame-before.png') }}" alt="">
+    <img src="{{ asset('img/TwentyOneGame-after.png') }}" alt="">
+    <p>
+        Förändringarna lyckades åstadkomma målen av högre kodtäckning för TwentyOneGame och A-rating av allt i Scrutinizer.
+    </p>
+
     <h2 id="diskussion">Diskussion</h2>
+    <p>
+        Förändringarna var rimliga utifrån att bryta ut playBank delen ur playGame.
+        Det gjorde koden mer lättläst. Jag kan tänka mig att det är en bra idé att ha A-rating i Scrutinizer på allt
+        men det känns inte jättesvårt att åstadkomma det och jag undrar om det kanske kan ge falsk säkerhet. 
+        Generellt sätt är min upplevelse att dessa verktyg kan vara bra för att se till att det inte finns några större
+        risker i en kodbas men att det förmodligen inte räcker för att vara säker på att ens kod håller god kvalitet.
+
+    </p>
 
 
     {% endblock %}

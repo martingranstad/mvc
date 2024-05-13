@@ -198,6 +198,50 @@
         Att se likheter och skillnader för hur ORM ser ut i symfony jämfört med django var intressant.
     </p>
 
+    <h2 id="kmom06">Kmom06</h2>
+
+
+    <h3>
+        Hur uppfattade du verktyget phpmetrics och fann du några särskilda bitar mer värdefulla än andra? Var det några särskilda metrics eller bilder du uppskattade?
+    </h3>
+    <p>
+        Jag tycker faktiskt att ClassRank var en intressant metric. Överblicken där ger ett sätt att se vilka klasser
+        som är allra viktigast. Jag tänker att det kan vara en bra riktlinje för vad som bör prioriteras högst för refactoring
+        och för att skriva tester till. Det är ju förmodligen nära kopplat till affarent coupling. Finns det buggar i en sådan
+        klass så är det mycket annat som kan gå snett i koden.
+    </p>
+
+    <h3>
+        Berätta hur det gick att integrera med Scrutinizer och vilken är din första känsla av verktyget och dess badges? Vilken kodtäckning och kodkvalitet fick du efter första bygget?
+    </h3>
+    <p>Efter första bygget hade jag 9.87 på kodkvalitet och jag förbättrade det till 10.0.
+        Kodtäckning gick från 27% till 28%. Det var inga större problem att integrera med scrutinizer.
+        Första builden tog dock väldigt lång tid när PHP skulle byggas. Andra gången gick det dock mycket snabbare.
+        Jag tänker att badges kan vara ett sätt att få en uppfattning om ett projekt är någorlunda välskött eller inte.
+        Det är fömodligen inte någon 100% säkerhet att det är bra dock så det blir viktigt att inte stirra sig blind på dem.
+    </p>
+
+    <h3>
+        Hur är din egen syn på kodkvalitet, berätta lite om den? Tror du man kan man påvisa kodkvalitet i någon viss mån med badges eller vad tror du?
+    </h3>
+    <p>
+        Jag tror att badges kan vara en indikation på kvalitet. Det ger en uppfattning om det är ett vältestat eller ett kasst testat projekt.
+        Jag tycker att det är lurigt hur controllers ska testas och när jag googlade gavs det förslag på att skriva funktionella test för dem snarare än unittester.
+        Jag gjorde dock aldrig det men det skulle vara intressant att se om badges med kodtäckning förändras med funktionella tester eller inte.
+        Jag tror att det är bra att arbeta med verktyg som linters och scrutinizer eftersom att det minskar risken att man börjar slarva med koden.
+        Helst ska man väl vara så pass systematisk i sin utveckling att allt kommer ut grönt på andra sidan och verktygen vi arbetat med i detta kmom
+        fungerar som ett sätt att bekräfta vi inte börjat slarva i processen.
+    </p>
+
+    <h3>
+        Vilken är din TIL för detta kmom?
+    </h3>
+    <p>
+        Jag hade ingen koll alls på verktyg som Scrutinizer eller PHPMetrics sedan innan så det vara bra att få doppa tårna i det och se om det är något
+        som kan användas på egna projekt i framtiden.
+    </p>
+
+
 
 
 {% endblock %}
