@@ -44,27 +44,37 @@ class TwentyOneGame
                 "bankHand" => $this->bank->getCardStrings());
         }
         if (!$this->player->isPlaying()) {
-            $bankPoints = $this->bank->playAndReturnPoints($this->deck);
+            return $this->playBank();
+        }
+        return null;
+    }
 
-            $this->gameOver = true;
-            if ($bankPoints > 21) {
-                $this->message = "The bank got over 21 and you won!";
-                return array("message" => $this->message,
-                    "playerHand" => $this->player->getCardStrings(),
-                    "bankHand" => $this->bank->getCardStrings());
-            }
-            if ($bankPoints >= $this->player->getTotalPoints()) {
-                $this->message = "The bank won!";
-                return array("message" => $this->message,
-                    "playerHand" => $this->player->getCardStrings(),
-                    "bankHand" => $this->bank->getCardStrings());
-            }
-            $this->message = "You had more points then the bank and won!";
+    /**
+     * Plays the bank part, sets message and game over. Returns an array with the result.
+     * 
+     * @return array{message: string, playerHand: array<string>, bankHand: array<string>} The result of the game.
+     */
+    public function playBank(): array
+    {
+        $bankPoints = $this->bank->playAndReturnPoints($this->deck);
+
+        $this->gameOver = true;
+        if ($bankPoints > 21) {
+            $this->message = "The bank got over 21 and you won!";
             return array("message" => $this->message,
                 "playerHand" => $this->player->getCardStrings(),
                 "bankHand" => $this->bank->getCardStrings());
         }
-        return null;
+        if ($bankPoints >= $this->player->getTotalPoints()) {
+            $this->message = "The bank won!";
+            return array("message" => $this->message,
+                "playerHand" => $this->player->getCardStrings(),
+                "bankHand" => $this->bank->getCardStrings());
+        }
+        $this->message = "You had more points then the bank and won!";
+        return array("message" => $this->message,
+            "playerHand" => $this->player->getCardStrings(),
+            "bankHand" => $this->bank->getCardStrings());
     }
 
     /**

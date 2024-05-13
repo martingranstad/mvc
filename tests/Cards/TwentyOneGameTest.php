@@ -11,6 +11,27 @@ use PHPUnit\Framework\TestCase;
 
 class TwentyOneGameTest extends TestCase
 {
+    public function testPlayGameGameIsOver(): void
+    {
+        $player = new Player(new CardHand());
+        $bank = new Bank(new CardHand());
+        $deck = new DeckOfCards();
+        $game = new TwentyOneGame($player, $bank, $deck);
+
+        $game->stopPlayerPlaying();
+
+        $result = $game->playGame();
+
+        $this->assertTrue($game->isGameOver());
+        $result = $game->playGame();
+        $this->assertArrayHasKey('message', $result);
+        $this->assertEquals($game->getMessage(), $result['message']);
+        $this->assertEquals($player->getCardStrings(), $result['playerHand']);
+        $this->assertEquals($bank->getCardStrings(), $result['bankHand']);
+
+
+    }
+
     public function testPlayGamePlayerBusts(): void
     {
         $player = new Player(new CardHand());
@@ -134,5 +155,15 @@ class TwentyOneGameTest extends TestCase
         $game->stopPlayerPlaying();
 
         $this->assertFalse($player->isPlaying());
+    }
+
+    public function testGetMessage(): void
+    {
+        $player = new Player(new CardHand());
+        $bank = new Bank(new CardHand());
+        $deck = new DeckOfCards();
+        $game = new TwentyOneGame($player, $bank, $deck);
+
+        $this->assertEquals("", $game->getMessage());
     }
 }

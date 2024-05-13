@@ -1,0 +1,118 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <h1>Metrics analys</h1>
+    <h2 id="introduktion">Introduktion</h2>
+    <h3>Codestyle</h3>
+    <h3>Coverage</h3>
+    <p>
+        Coverage är ett mått på hur mycket av koden som täcks av projektets tester.
+        Desto högre kodtäckningen är desto mindre är sannolikheten för buggar i programmet.
+        Det mäter dock inte om allt som behöver testas i koden faktiskt testas. Ibland kan en del testas på ett trivialt
+        vis och inte faktiskt testa alla möjliga scenarion. 100% test täckning kan alltså ses som ett nödvändigt men inte tillräckligt vilkor för vältestad kod.
+        Här går det att se test coverage från scrutinizer där man kan se att jag inte skrivit tester för Controllers
+        eller klasserna från kmom05.
+        <img src="{{ asset('img/test-coverage.png') }}" alt="Test Coverage">
+    <h3>Complexity</h3>
+    <p>
+        Cyklomatisk komplexitet kan enkelt beskrivas som antal beslutspunkter koden går igenom i en funktion/klass.
+        Eller snarare är det antalet oberoende exekveringsvägar som koden kan ta. Enligt wikipedia används cyklomatisk komplexitet
+        ofta som en indikation för att avgöra hur många test som behövs för en viss modul. Eftersom att om man skriver
+        ett test för varje möjlig väg i programmet så kommer du att ha testat allt i programmet. Det är också så coverage
+        definieras i scrutinizer. Det är antalet test i relation i komplexiteten.
+    </p>
+    <p>
+        Klassen LibraryController från kmom05 är klassen i mitt projekt med högst komplexitet. Det är också en klass
+        som har 0% coverage. Detta kan jag förmodligen använda som förbättringsområde och se komplexiteten som en riktlinje
+        i hur många test jag behöver skriva.
+        <img src="{{ asset('img/complexity-example.png') }}" alt="Complexity">
+    </p>
+    <h3>Cohesion</h3>
+    <p>
+        Cohesion är ett mått på hur väl en klass håller sig till att fylla endast en funktion. I PHPMetrics 
+        finns värdet LCOM som ska indikera hur många ansvarsområden en klass har. Målet är att varje klass
+        endast har ett ansvarsområde.
+    </p>
+
+    <h3>Coupling</h3>
+    <p>
+        Coupling är mått på hur beroende olika klasser är av varandra. Affarent coupling är antalet andra klasser
+        som påverkas av en viss klass. Efferent coupling är antalet klasser som en viss klass är beroende av.
+    </p>
+    <p>
+        Följande screenshot från PHPMetrics visar att Controller klasserna tenderar att vara beroende av många
+        andra klasser men att inga andra klasser är beroende av dem. Att jag inte har skrivit tester till mina
+        controllers tänker jag då inte är lika farligt som om det omvända hade varit fallet.
+        <img src="{{ asset('img/coupling-example.png') }}" alt="Complexity">
+    </p>
+
+    <h3>CRAP</h3>
+    <p>
+        CRAP-score räknas ut från relationen mellan komplexiteten och antalet testfall för en klass/metod.
+        Eftersom att mina controllers inte är testade så får de höga CRAP-scorer. twentyOne routen är den
+        metod med högst CRAP eftersom att den har en hög komplexitet om 20 och inte är testad alls.
+    </p>
+
+
+    <h2 id="phpmetrics">PHPMetrics</h2>
+    <p>
+        Jag kan använda PHPMetrics för att identifiera klasser som aldrig blir kallade av några tester. Här kan
+        jag plocka ut klasser och skriva tester till dem.
+        <img src="{{ asset('img/classestest.png') }}" alt="Classes without test">
+    </p>
+    <p>
+        LibraryController-klassen pekas ut som en klass som förmodligen har buggar och det rekommenderas att skapa
+        enhetstester till den. Detta pekas också ut av scrutinizer så det är förmodligen en bra idé att fixa till det.   
+    </p>
+    <p>
+        CardGameController identifieras som en klass med dåligt maintainability index vilket innebär att jag föredlaktigen
+        kan skriva enhetstester till den.
+    </p>
+
+    <h2 id="scrutinizer">Scrutinizer</h2>
+    <p>
+        Klassen LibraryController från kmom05 är klassen i mitt projekt med högst komplexitet. Det är också en klass
+        som har 0% coverage. Detta kan jag förmodligen använda som förbättringsområde och se komplexiteten som en riktlinje
+        i hur många test jag behöver skriva.
+        <img src="{{ asset('img/complexity-example.png') }}" alt="Complexity">
+    </p>
+    <p>
+        Här går det att se test coverage från scrutinizer där man kan se att jag inte skrivit tester för Controllers
+        eller klasserna från kmom05.
+        <img src="{{ asset('img/test-coverage.png') }}" alt="Test Coverage">
+        Jag kan välja ut några av klasserna och skriva enhetstester till dem som en förbättring.
+    </p>
+    <p>
+        TwentyOneGame::playGame() är den enda metoden som inte har A-rating i Scrutinizer. Ett bra alternativ
+        kan vara att se över den och se om den kanske kan delas upp lite.
+    </p>
+    <img src = "https://scrutinizer-ci.com/g/martingranstad/mvc/badges/quality-score.png?b=main">
+    <img src = "https://scrutinizer-ci.com/g/martingranstad/mvc/badges/coverage.png?b=main">
+    <img src = "https://scrutinizer-ci.com/g/martingranstad/mvc/badges/build.png?b=main">
+    <img src = "https://scrutinizer-ci.com/g/martingranstad/mvc/badges/code-intelligence.svg?b=main">
+
+    <h2 id="forbattringar">Förbättringar</h2>
+    <h3>playGame() till A-rating</h3>
+    <p>
+        TwentyOneGame::playGame() är den enda metoden som inte har A-rating i Scrutinizer. Jag tror att 
+        jag kan höja ratingen till A genom att bryta ut delen där banken spelar till en egen metod playBank().
+        Det kommer att minska komplexiteten hos funktionen och göra den mer lättläst.
+    </p>
+
+    <h3>Skriva enhetstest för TwentyOneGame getMessage()</h3>
+    <p>
+        Jag ska skriva enhetstest för TwentyOneGame::getMessage() för att öka test coverage för TwentyOneGame.
+    </p>
+
+    <h3>Skriva enhetstest för TwentyOneGame playGame()</h3>
+    <p>
+        Detta kommer öka test coverage för playGame() samt öka sannolikheten för att få A-rating i Scrutinizer.
+    </p>
+
+
+    <h2 id="diskussion">Diskussion</h2>
+
+
+    {% endblock %}
