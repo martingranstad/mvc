@@ -15,16 +15,18 @@
     </head>
     <body>
         <header class="site-header">
-            <span class="site-title">Me-sidan</span>
+            <span class="site-title">Projektet</span>
         </header>
         <nav>
             <ul>
                 <li><a href="{{ path('project') }}">Project Home</a></li>
             </ul>
         </nav>
+        <main>
         {% block body %}{% endblock %}
+        </main>
         <footer class="site-footer">
-            <p>En sida till MVC-kursen | &copy; 2024 Me-sidan</p>
+            <p>Projekt | &copy; 2024 Martin</p>
         </footer>
     </body>
 </html>

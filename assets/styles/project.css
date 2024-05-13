@@ -1,32 +1,44 @@
 body {
     margin: 0 auto;
-    max-width: 600px;
-}
-body {
+    max-width: 800px;
 }
 
 h1 {
-    border-bottom: 4px double #ccc;
+    border-bottom: 4px dashed #ccc;
+}
+
+main {
+    border-right:4px dashed #ccc;
+    border-left:4px dashed #ccc;
+    padding: 1em;
 }
 
 .site-header {
-    background: #fff;
+    background: #2d5e70;
     color: #fff;
     padding: 50px 0;
+    margin-top: 1em;
+    font-size: 3em;
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     text-align: center;
 }
 
 .site-footer {
-    background: #333;
+    background: #2d5e70;
     color: #fff;
     padding: 20px 0;
     text-align: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 nav {
     background: #d2d2d2;
     color: #000000;
     text-align: center;
+    padding: 1em 0;
 
 }
 
