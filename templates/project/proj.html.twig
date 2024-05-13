@@ -1,0 +1,27 @@
+{% extends "project/base.html.twig" %}
+
+{% block title %}Project{% endblock %}
+
+{% block body %}
+    <h1>Om MVC</h1>
+        <div class='some-page-wrapper'>
+        <div class='row'>
+            <div class='column'>
+                <p>
+                    Enligt kursens skapare på Canvas beskrivs kursen som följande:
+                    "Namnet "mvc" är vårt eget smeknamn på kursen och under det namnet döljer sig objektorienterad PHP-programmering med kända webbramverk, enhetstestning, kodkvalitet och databaskopplingar med objekt relational mapping (ORM)."
+                </p>
+                <a href="{{ asset('img/glider.svg') }}">
+                    <img src="{{ asset('img/glider.svg') }}" alt="">
+                </a>
+            </div>
+            <div class='column'>
+                <p>
+                    Kursens Github-repo hittar du <a href="https://github.com/dbwebb-se/mvc">här</a>.
+                    Mitt Github-repo hittar du <a href="https://github.com/martingranstad/mvc">här</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

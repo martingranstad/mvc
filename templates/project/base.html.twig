@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+            <link rel="icon" href="{{ asset('img/glider.svg') }}">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('project') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+    </head>
+    <body>
+        <header class="site-header">
+            <span class="site-title">Me-sidan</span>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="{{ path('project') }}">Project Home</a></li>
+            </ul>
+        </nav>
+        {% block body %}{% endblock %}
+        <footer class="site-footer">
+            <p>En sida till MVC-kursen | &copy; 2024 Me-sidan</p>
+        </footer>
+    </body>
+</html>
