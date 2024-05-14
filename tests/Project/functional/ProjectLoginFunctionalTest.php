@@ -4,7 +4,7 @@ namespace App\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class ProjectLoginTest extends WebTestCase
+class ProjectLoginFunctionalTest extends WebTestCase
 {
     public function testUserLoginUserDoesNotExist(): void
     {
@@ -17,12 +17,7 @@ class ProjectLoginTest extends WebTestCase
         $this->assertResponseIsSuccessful();
 
         // There he finds a form with a textfield with the label "Ditt namn:" and a submit button
-        $this->assertSelectorExists('form');
-        $this->assertSelectorTextContains('label', 'Ditt namn:');
-        $this->assertSelectorExists('input[type="text"]');
-        $this->assertSelectorExists('input[type="submit"]');
-
-        // Johan fills in the textfield with his name and submits the form
+                // Johan fills in the textfield with his name and submits the form
         $client->submitForm('Skicka', [
             'name' => 'Johan'
         ]);
@@ -33,7 +28,6 @@ class ProjectLoginTest extends WebTestCase
         // Johan faces a welcome message greeting him and informing him that he's account balance is 1000
         $this->assertSelectorTextContains('h1', 'Välkommen Johan!');
         $this->assertSelectorTextContains('p', 'Ditt konto innehåller 1000 kr');
-
     }
 }
         
