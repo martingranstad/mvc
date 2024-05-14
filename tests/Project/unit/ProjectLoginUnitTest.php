@@ -15,7 +15,15 @@ class ProjectLoginUnitTest extends WebTestCase
         $this->assertSelectorExists('form');
         $this->assertSelectorExists('input[type="text"]');
         $this->assertSelectorExists('input[type="submit"]');
+    }
 
+    public function testProjectRouteFormHasCorrectLabel(): void
+    {
+        $client = static::createClient();
+
+        $client->request('GET', '/proj');
+
+        $this->assertSelectorTextContains('label', 'Ditt namn:');
     }
 
 }

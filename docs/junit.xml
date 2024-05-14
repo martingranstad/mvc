@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit" tests="1" assertions="1" errors="0" warnings="0" failures="1" skipped="0" time="0.378109">
-    <testsuite name="App\Tests\ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="1" skipped="0" time="0.378109">
-      <testcase name="testProjectRouteFormExists" class="App\Tests\ProjectLoginUnitTest" classname="App.Tests.ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" line="9" assertions="1" time="0.378109">
-        <failure type="PHPUnit\Framework\ExpectationFailedException">App\Tests\ProjectLoginUnitTest::testProjectRouteFormExists
-Failed asserting that the Crawler matches selector "form".
-
-/home/martin/dbwebb-kurser/mvc/me/report/vendor/symfony/framework-bundle/Test/DomCrawlerAssertionsTrait.php:29
-/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php:15</failure>
-      </testcase>
+  <testsuite name="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit" tests="2" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.408734">
+    <testsuite name="App\Tests\ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" tests="2" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.408734">
+      <testcase name="testProjectRouteFormExists" class="App\Tests\ProjectLoginUnitTest" classname="App.Tests.ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" line="9" assertions="3" time="0.386116"/>
+      <testcase name="testProjectRouteFormHasCorrectLabel" class="App\Tests\ProjectLoginUnitTest" classname="App.Tests.ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" line="20" assertions="2" time="0.022618"/>
     </testsuite>
   </testsuite>
 </testsuites>
