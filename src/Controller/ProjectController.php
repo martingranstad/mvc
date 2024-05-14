@@ -13,4 +13,11 @@ class ProjectController extends AbstractController
     {
         return $this->render('project/proj.html.twig');
     }
+
+
+    #[Route("/proj/about", name: "about-project")]
+    public function aboutProject(): Response
+    {
+        return $this->render('project/about.html.twig');
+    }
 }
