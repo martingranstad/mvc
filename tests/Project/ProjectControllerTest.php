@@ -46,4 +46,24 @@ class ProjectControllerTest extends WebTestCase
 
         $this->assertSelectorTextContains('title', 'Om projektet');
     }
+
+    public function testH1ExistsHomeRoute(): void
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/proj');
+
+        $this->assertResponseIsSuccessful();
+
+        $this->assertSelectorExists('h1');
+    }
+
+    public function testH1ExistsAboutRoute(): void
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/proj/about');
+
+        $this->assertResponseIsSuccessful();
+
+        $this->assertSelectorExists('h1');
+    }
 }
