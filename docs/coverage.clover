@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1715699932">
-  <project timestamp="1715699932">
+<coverage generated="1715701267">
+  <project timestamp="1715701267">
     <file name="/home/martin/dbwebb-kurser/mvc/me/report/src/Cards/Bank.php">
       <class name="App\Cards\Bank" namespace="global">
         <metrics complexity="4" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="9" coveredelements="9"/>
@@ -509,10 +509,10 @@
       <class name="App\Controller\ProjectController" namespace="global">
         <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </class>
-      <line num="11" type="method" name="project" visibility="public" complexity="1" crap="1" count="5"/>
-      <line num="14" type="stmt" count="5"/>
-      <line num="18" type="method" name="aboutProject" visibility="public" complexity="1" crap="1" count="5"/>
-      <line num="21" type="stmt" count="5"/>
+      <line num="11" type="method" name="project" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="14" type="stmt" count="6"/>
+      <line num="18" type="method" name="aboutProject" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="21" type="stmt" count="6"/>
       <metrics loc="24" ncloc="24" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
     </file>
     <file name="/home/martin/dbwebb-kurser/mvc/me/report/src/Controller/TwentyOneController.php">
