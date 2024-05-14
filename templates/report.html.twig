@@ -242,13 +242,18 @@
     </p>
 
     <h2 id="kmom10">Kmom10</h2>
-    <h3>Krav 1</h3>
+    <h3>Krav 1-3</h3>
     <p>
         Jag skapade en ny kontroller, ProjectController, som kommer att hantera routes för projektet.
         Jag lade till en ny route /proj som visar upp första sidan för projektet. Den rendrerar vyn
         project/proj.html.twig. Jag skapade också ett nytt base template för projektet som heter project/base.html.twig.
         I det templaten länkar jag till andra css/js filer. Dessa fick jag förbereda för encore i webpack.config.js genom
         att köra addEntry. Jag gjorde ordning en ny style i project.css där jag omarbetade min gamla style.
+        Jag skapade routen och view för about sidan.
+    </p>
+    <p>
+        Jag skapade sedan applikationstester för projektet. Jag skapade en testklass för ProjectController och testade att routen /proj
+        renderade rätt vy. Jag skapade också en testklass för ProjectController och testade att routen /about renderade rätt vy.
     </p>
 
 {% endblock %}
