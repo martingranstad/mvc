@@ -26,5 +26,14 @@ class ProjectLoginUnitTest extends WebTestCase
         $this->assertSelectorTextContains('label', 'Ditt namn:');
     }
 
+    public function testProjectRouteFormMethodIsPost(): void
+    {
+        $client = static::createClient();
+
+        $client->request('GET', '/proj');
+
+        $this->assertSelectorExists('form[method="post"]');
+    }
+
+
 }
-        

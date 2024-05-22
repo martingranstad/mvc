@@ -5,9 +5,11 @@
 {% block body %}
     <h1>Om MVC</h1>
 
-    <form>
+    <form method="post">
         <label for="name">Ditt namn:</label>
         <input type="text" id="name" name="name" required>
-        <input type="submit" value="Skicka">
+        <input type="submit" name="Skicka" value="Starta spelet"
+        onClick="this.form.action='{{ path('proj-game') }}';this.form.method='post';"
+        >
     </form>
 {% endblock %}

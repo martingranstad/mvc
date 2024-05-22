@@ -1,0 +1,17 @@
+{% extends "project/base.html.twig" %}
+
+{% block title %}Deck{% endblock %}
+
+{% block body %}
+<h1>Game Over</h1>
+{{ include('_flash.html.twig') }}
+<h2>Player Cards</h2>
+{% for card in playerHand %}
+    {{ card }}
+{% endfor %}
+<h2>Dealer Cards</h2>
+{% for card in bankHand %}
+    {{ card }}
+{% endfor %}
+<a href="{{ path('project') }}">Play again</a>
+{% endblock %}

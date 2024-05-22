@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit" tests="2" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.408734">
-    <testsuite name="App\Tests\ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" tests="2" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.408734">
-      <testcase name="testProjectRouteFormExists" class="App\Tests\ProjectLoginUnitTest" classname="App.Tests.ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" line="9" assertions="3" time="0.386116"/>
-      <testcase name="testProjectRouteFormHasCorrectLabel" class="App\Tests\ProjectLoginUnitTest" classname="App.Tests.ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" line="20" assertions="2" time="0.022618"/>
+  <testsuite name="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit" tests="3" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.434693">
+    <testsuite name="App\Tests\ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" tests="3" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.434693">
+      <testcase name="testProjectRouteFormExists" class="App\Tests\ProjectLoginUnitTest" classname="App.Tests.ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" line="9" assertions="3" time="0.389100"/>
+      <testcase name="testProjectRouteFormHasCorrectLabel" class="App\Tests\ProjectLoginUnitTest" classname="App.Tests.ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" line="20" assertions="2" time="0.024202"/>
+      <testcase name="testProjectRouteFormMethodIsPost" class="App\Tests\ProjectLoginUnitTest" classname="App.Tests.ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" line="29" assertions="1" time="0.021391"/>
     </testsuite>
   </testsuite>
 </testsuites>
