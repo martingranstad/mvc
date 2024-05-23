@@ -38,11 +38,12 @@ class ProjectController extends AbstractController
         if ($_POST) {
             $name = $_POST['name'];
             $session->set("name", $name);
+            $numHands = $_POST['numberOfHands'];
         } else {
             $name = $session->get("name");
+            $numHands = 1;
         }
 
-        $numHands = 3;
         /** @var TwentyOneGame|null $game */
         $game = $session->get("game");
         if (!$game) {
