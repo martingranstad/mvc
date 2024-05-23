@@ -8,6 +8,10 @@
     <form method="post">
         <label for="name">Ditt namn:</label>
         <input type="text" id="name" name="name" required>
+        <br>
+        <label for="numberOfHands">Hur många händer vill du spela?(1-3)</label>
+        <input type="number" id="numberOfHands" name="numberOfHands" required min="1" max="3" value="1">
+        <br>
         <input type="submit" name="Skicka" value="Starta spelet"
         onClick="this.form.action='{{ path('proj-game') }}';this.form.method='post';"
         >

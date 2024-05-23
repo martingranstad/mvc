@@ -7,22 +7,41 @@ use InvalidArgumentException;
 class BlackJackGame
 {
     private bool $gameOver;
-    private string $message;
+    private array $messages;
+    private array $bustedPlayers;
+    private array $players;
+    private $deck;
+    private $bank;
     
     /**
      * Constructor for the class representing a game of Blackjack.
      *
-     * @param Player $player The player
+     * @param array<Player> $players The players
      * @param Bank $bank The bank
      * @param DeckOfCards $deck The deck of cards to draw from.
+     * @throws InvalidArgumentException If the number of players is not between 1 and 3.
      */
-    public function __construct(protected Player $player, protected Bank $bank, protected DeckOfCards $deck)
+    public function __construct(array $players, Bank $bank, DeckOfCards $deck)
     {
+        if (count($players) < 1 || count($players) > 3) {
+            throw new InvalidArgumentException("The number of players must be between 1 and 3.");
+        }
+        $this->players = $players;
+        $this->bank = $bank;
+
         $this->gameOver = false;
-        $this->message = "";
-        $deck->shuffleDeck();
-        $player->reset();
-        $bank->reset();
+        $this->deck = $deck;
+        $this->deck->shuffleDeck();
+
+        var_dump($this->players);
+        
+        foreach ($this->players as $player) {
+            $this->messages[] = "";
+            $this->bustedPlayers[] = false;
+            $player->reset();
+        }
+        
+        $this->bank->reset();
     }
 
     /**
@@ -32,25 +51,35 @@ class BlackJackGame
      */
     public function playGame(): array|null
     {
+        $playersPlaying = false;
+
         if ($this->gameOver) {
             return array(
-                "message" => $this->message,
-                "playerHand" => $this->player->getCardStrings(),
+                "messages" => $this->messages,
+                "playerHands" => $this->getPlayerHands(),
                 "bankHand" => $this->bank->getCardStrings()
             );
         }
-        
-        if ($this->player->getTotalPoints() > 21) {
-            $this->gameOver = true;
-            $this->message = "You got over 21 and lost!";
-            return array(
-                "message" => $this->message,
-                "playerHand" => $this->player->getCardStrings(),
-                "bankHand" => $this->bank->getCardStrings()
-            );
+
+        for ($i = 0; $i < count($this->players); $i++) {
+            if ($this->bustedPlayers[$i]) {
+                continue;
+            }
+
+            $player = $this->players[$i];
+            $playerPoints = $player->getTotalPoints();
+
+            if ($playerPoints > 21) {
+                $this->bustedPlayers[$i] = true;
+                $this->messages[$i] = "You got over 21 and lost!";
+                $player->stopPlaying();
+            }
+            if ($player->isPlaying()) {
+                $playersPlaying = true;
+            }
         }
         
-        if (!$this->player->isPlaying()) {
+        if (!$playersPlaying) {
             return $this->playBank();
         }
         
@@ -68,30 +97,46 @@ class BlackJackGame
 
         $this->gameOver = true;
         
-        if ($bankPoints > 21) {
-            $this->message = "The bank got over 21 and you won!";
-            return array(
-                "message" => $this->message,
-                "playerHand" => $this->player->getCardStrings(),
-                "bankHand" => $this->bank->getCardStrings()
-            );
+        
+        $returnArray = [];
+        for ($i = 0; $i < count($this->players); $i++) {
+            if ($this->bustedPlayers[$i]) {
+                $this->messages[$i] = "You got over 21 and lost!";
+                $returnArray = array(
+                    "messages" => $this->messages,
+                    "playerHands" => $this->getPlayerHands(),
+                    "bankHand" => $this->bank->getCardStrings()
+                );
+            }
+            else if ($bankPoints > 21) {
+                $this->messages[i] = "The bank got over 21 so your hand won!";
+                $returnArray = array(
+                    "messages" => $this->messages,
+                    "playerHands" => $this->getPlayerHands(),
+                    "bankHand" => $this->bank->getCardStrings()
+                );
+            }
+            else if ($bankPoints >= $this->players[$i]->getTotalPoints()) {
+                $this->messages[$i] = "The bank won over this hand!";
+                $returnArray = array(
+                    "messages" => $this->messages,
+                    "playerHands" => $this->getPlayerHands(),
+                    "bankHand" => $this->bank->getCardStrings()
+                );
+            }
+            else{
+                $this->messages[$i] = "This hand had more points than the bank and won!";
+                $returnArray = array(
+                    "messages" => $this->messages,
+                    "playerHands" => $this->getPlayerHands(),
+                    "bankHand" => $this->bank->getCardStrings()
+                );
+            }
         }
         
-        if ($bankPoints >= $this->player->getTotalPoints()) {
-            $this->message = "The bank won!";
-            return array(
-                "message" => $this->message,
-                "playerHand" => $this->player->getCardStrings(),
-                "bankHand" => $this->bank->getCardStrings()
-            );
-        }
         
-        $this->message = "You had more points than the bank and won!";
-        return array(
-            "message" => $this->message,
-            "playerHand" => $this->player->getCardStrings(),
-            "bankHand" => $this->bank->getCardStrings()
-        );
+
+        return $returnArray;
     }
 
     /**
@@ -107,11 +152,11 @@ class BlackJackGame
     /**
      * Return game over message.
      *
-     * @return string Game over message.
+     * @return array<String> Game over messages.
      */
-    public function getMessage(): string
+    public function getMessage(): array
     {
-        return $this->message;
+        return $this->messages;
     }
 
     /**
@@ -119,12 +164,16 @@ class BlackJackGame
      *
      * @return array{playerHand: array<string>, playerScore: int} The player's score and hand.
      */
-    public function getPlayerHand(): array
+    public function getPlayerHands(): array
     {
-        return array(
-            "playerHand" => $this->player->getCardStrings(),
-            "playerScore" => $this->player->getTotalPoints()
-        );
+        $playerHands = array();
+        foreach ($this->players as $player) {
+            $playerHands[] = array(
+                "playerHand" => $player->getCardStrings(),
+                "playerScore" => $player->getTotalPoints()
+            );
+        }
+        return $playerHands; 
     }
 
     /**
@@ -132,9 +181,9 @@ class BlackJackGame
      *
      * @return void
      */
-    public function givePlayerCard(): void
+    public function givePlayerCard(int $playerId): void
     {
-        $this->player->addCard($this->deck->drawCards(1)[0]);
+        $this->players[$playerId]->addCard($this->deck->drawCards(1)[0]);
         $this->message = "You drew a card!";
     }
 
@@ -143,10 +192,10 @@ class BlackJackGame
      *
      * @return void
      */
-    public function stopPlayerPlaying(): void
+    public function stopPlayerPlaying(int $playerId): void
     {
-        $this->player->stopPlaying();
-        $this->message = "You stopped playing, now it's the bank's turn!";
+        $this->players[$playerId]->stopPlaying();
+        $this->message = "You stopped playing the hand";
     }
 
     /**
@@ -157,12 +206,11 @@ class BlackJackGame
     public function getGameState(): array
     {
         return array(
-            "playerHand" => $this->player->getCardStrings(),
-            "playerScore" => $this->player->getTotalPoints(),
+            "playerHands" => $this->getPlayerHands(),
             "bankHand" => $this->bank->getCardStrings(),
             "bankScore" => $this->bank->getTotalPoints(),
             "gameOver" => $this->gameOver,
-            "message" => $this->message
+            "messages" => $this->messages
         );
     }
 }

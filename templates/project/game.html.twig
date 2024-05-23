@@ -8,19 +8,22 @@
     <p>
         Du spelar nu Black Jack. Lycka till {{ name }}!
     </p>
-    <h2>Your Cards</h2>
-    {% for card in playerHand %}
-        {{ card }}
+    {% for playerHand in playerHands %}
+        <h2>Hand {{ loop.index }}</h2>
+        {% for card in playerHand["playerHand"] %}
+            {{ card }}
+        {% endfor %}
+        <h3>Current Score</h3>
+        <p>{{ playerHand["playerScore"] }}</p>
+        <h3>What do you want to do?</h3>
+        <form method="post" action="">
+            <input type="hidden" name="hand" value="{{ loop.index0 }}">
+            <input type="submit" name="POST twenty-one/draw-card" value="Draw Card"
+            onClick="this.form.action='{{ path('proj-game-draw-card') }}';this.form.method='post';"
+            >
+            <input type="submit" name="POST twenty-one/stop-playing" value="Stay"
+            onClick="this.form.action='{{ path('proj-game-stop-playing') }}';this.form.method='post';"
+            >
+        </form>
     {% endfor %}
-    <h2>Current Score</h2>
-    <p>{{ playerScore }}</p>
-    <h2>What do you want to do?</h2>
-    <form method="post" action="">
-        <input type="submit" name="POST twenty-one/draw-card" value="Draw Card"
-        onClick="this.form.action='{{ path('proj-game-draw-card') }}';this.form.method='post';"
-        >
-        <input type="submit" name="POST twenty-one/stop-playing" value="Stay"
-        onClick="this.form.action='{{ path('proj-game-stop-playing') }}';this.form.method='post';"
-        >
-    </form>
 {% endblock %}

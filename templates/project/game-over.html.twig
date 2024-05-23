@@ -5,10 +5,18 @@
 {% block body %}
 <h1>Game Over</h1>
 {{ include('_flash.html.twig') }}
-<h2>Player Cards</h2>
-{% for card in playerHand %}
-    {{ card }}
-{% endfor %}
+{% for playerHand in playerHands %}
+    <h2>Hand {{ loop.index }}</h2>
+    <h3>Player Cards</h3>
+    {% for card in playerHand["playerHand"] %}
+        {{ card }}
+    {% endfor %}
+    <h3>Score</h3>
+    <p>{{ playerHand["playerScore"] }}</p>
+    <h3>Result</h3>
+    <p>{{ messages[loop.index0] }}</p>
+{% endfor %}  
+
 <h2>Dealer Cards</h2>
 {% for card in bankHand %}
     {{ card }}
