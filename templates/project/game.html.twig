@@ -7,6 +7,8 @@
     <h1>Black Jack</h1>
     <p>
         Du spelar nu Black Jack. Lycka till {{ name }}!
+
+        Minsta bett är 10 kr och max bett är 100 kr.
     </p>
     {% for playerHand in playerHands %}
         <h2>Hand {{ loop.index }}</h2>
@@ -15,6 +17,24 @@
         {% endfor %}
         <h3>Current Score</h3>
         <p>{{ playerHand["playerScore"] }}</p>
+        <h3>Current Bet</h3>
+        <p>{{ playerBets[loop.index0] }}</p>
+        {% if gameState == "initialBetting"%}
+            {% if playerBets[loop.index0] == 0 %}
+            <h3>Vad vill du ha för inledande insats?</h3>
+            <form method="post">
+                <input type="hidden" name="hand" value="{{ loop.index0 }}">
+                <label for="initialBet">Inledande insats:</label>
+                <input type="number" id="initialBet" name="initialBet" required min="10" max="100" value="100">
+                <br>
+                <input type="submit" name="Skicka" value="Satsa"
+                onClick="this.form.action='{{ path('proj-game') }}';this.form.method='post';"
+                >
+            </form>
+            {% else %}
+            <p>Du har satsat på denna hand. Satsa på de andra händerna!</p>
+            {% endif %}
+        {% else %}
         <h3>What do you want to do?</h3>
         <form method="post" action="">
             <input type="hidden" name="hand" value="{{ loop.index0 }}">
@@ -25,5 +45,6 @@
             onClick="this.form.action='{{ path('proj-game-stop-playing') }}';this.form.method='post';"
             >
         </form>
+        {% endif %}
     {% endfor %}
 {% endblock %}

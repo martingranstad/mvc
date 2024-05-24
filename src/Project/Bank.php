@@ -5,7 +5,7 @@ namespace App\Project;
 use App\Project\Player;
 
 /**
- * Bank class represents the bank in a game of 21.
+ * Bank class represents the bank in a game of Black Jack.
  * Extends the Player class.
  */
 class Bank extends Player

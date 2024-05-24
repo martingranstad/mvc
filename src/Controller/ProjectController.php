@@ -35,16 +35,16 @@ class ProjectController extends AbstractController
     ): Response {
 
         // Get the name from the post request and store it in the session
-        if ($_POST) {
+        $name = $session->get("name");
+        $numHands = $session->get("numHands");
+        if (!$name) {
             $name = $_POST['name'];
             $session->set("name", $name);
             $numHands = $_POST['numberOfHands'];
-        } else {
-            $name = $session->get("name");
-            $numHands = 1;
+            $session->set("numHands", $numHands);
         }
 
-        /** @var TwentyOneGame|null $game */
+        /** @var BlackJackGame|null $game */
         $game = $session->get("game");
         if (!$game) {
             for ($i = 0; $i < $numHands; $i++) {
@@ -65,8 +65,14 @@ class ProjectController extends AbstractController
             return $this->redirectToRoute('proj-game-over');
         }
 
+        // If initialBet is in POST request, set the bet for the player
+        if ($_POST && isset($_POST['initialBet'])) {
+            $game->addPlayerBet($_POST['hand'], $_POST['initialBet']);
+        }
+
         $gameResult = $game->playGame();
-        if ($gameResult) {
+        var_dump($gameResult);
+        if (!$gameResult || !is_string($gameResult)) {
             $this->addFlash(
                 'notice',
                 implode(', ', $gameResult['messages'])
@@ -75,8 +81,7 @@ class ProjectController extends AbstractController
             return $this->redirectToRoute('proj-game-over', ["messages" => $gameResult['messages']]);
         }
 
-
-        return $this->render('project/game.html.twig', array_merge(["playerHands" => $game->getPlayerHands()], ['name' => $name, 'numHands' => $numHands]));
+        return $this->render('project/game.html.twig', array_merge($game->getGameState(), ['name' => $name, 'numHands' => $numHands]));
     }
 
     //Post route that adds a card from the deck in session to the player in the session

@@ -8,6 +8,8 @@ class Player
 {
     protected bool $playing;
     protected int $totalPoints;
+    protected int $bet;
+    protected bool $betting;
 
     /**
      * Constructor for Player class.
@@ -18,6 +20,50 @@ class Player
     {
         $this->totalPoints = 0;
         $this->playing = true;
+        $this->bet = 0;
+        $this->betting = true;
+    }
+
+    /**
+     * Stop the player from betting.
+     * 
+     * @return void
+     */
+    public function stopBetting(): void
+    {
+        $this->betting = false;
+    }
+
+    /**
+     * Add a bet to the player.
+     * 
+     * @param int $bet The bet to add.
+     * 
+     * @return void
+     */
+    public function addBet(int $bet): void
+    {
+        $this->bet += $bet;
+    }
+
+    /**
+     * Get whether the player is betting.
+     * 
+     * @return bool True if the player is betting, false otherwise.
+     */
+    public function isBetting(): bool
+    {
+        return $this->betting;
+    }
+
+    /**
+     * Get the bet of the player.
+     * 
+     * @return int The bet of the player.
+     */
+    public function getBet(): int
+    {
+        return $this->bet;
     }
 
     /**

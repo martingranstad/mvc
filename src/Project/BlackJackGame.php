@@ -12,6 +12,7 @@ class BlackJackGame
     private array $players;
     private $deck;
     private $bank;
+    private string $gameState;
     
     /**
      * Constructor for the class representing a game of Blackjack.
@@ -21,13 +22,14 @@ class BlackJackGame
      * @param DeckOfCards $deck The deck of cards to draw from.
      * @throws InvalidArgumentException If the number of players is not between 1 and 3.
      */
-    public function __construct(array $players, Bank $bank, DeckOfCards $deck)
+    public function __construct(array $players, Bank $bank, DeckOfCards $deck, string $gameState = "initialBetting")
     {
         if (count($players) < 1 || count($players) > 3) {
             throw new InvalidArgumentException("The number of players must be between 1 and 3.");
         }
         $this->players = $players;
         $this->bank = $bank;
+        $this->gameState = $gameState;
 
         $this->gameOver = false;
         $this->deck = $deck;
@@ -49,7 +51,7 @@ class BlackJackGame
      *
      * @return array{message: string, playerHand: array<string>, bankHand: array<string>}|null The result of the game. If the player is still playing it returns null.
      */
-    public function playGame(): array|null
+    public function playGame(): array|null|string
     {
         $playersPlaying = false;
 
@@ -57,8 +59,22 @@ class BlackJackGame
             return array(
                 "messages" => $this->messages,
                 "playerHands" => $this->getPlayerHands(),
-                "bankHand" => $this->bank->getCardStrings()
+                "bankHand" => $this->bank->getCardStrings(),
+                "gameState" => $this->gameState
             );
+        }
+
+        // If none of the players are betting set the game state to playing
+        $betting = false;
+        for ($i = 0; $i < count($this->players); $i++) {
+            if ($this->players[$i]->isBetting()) {
+                $betting = true;
+            }
+        }
+        if ($betting) {
+            return $this->gameState;
+        } else {
+            $this->gameState = "playing";
         }
 
         for ($i = 0; $i < count($this->players); $i++) {
@@ -83,7 +99,7 @@ class BlackJackGame
             return $this->playBank();
         }
         
-        return null;
+        return $this->gameState;
     }
 
     /**
@@ -105,7 +121,8 @@ class BlackJackGame
                 $returnArray = array(
                     "messages" => $this->messages,
                     "playerHands" => $this->getPlayerHands(),
-                    "bankHand" => $this->bank->getCardStrings()
+                    "bankHand" => $this->bank->getCardStrings(),
+                    "gameState" => $this->gameState
                 );
             }
             else if ($bankPoints > 21) {
@@ -113,7 +130,9 @@ class BlackJackGame
                 $returnArray = array(
                     "messages" => $this->messages,
                     "playerHands" => $this->getPlayerHands(),
-                    "bankHand" => $this->bank->getCardStrings()
+                    "bankHand" => $this->bank->getCardStrings(),
+                    "gameState" => $this->gameState
+
                 );
             }
             else if ($bankPoints >= $this->players[$i]->getTotalPoints()) {
@@ -121,7 +140,9 @@ class BlackJackGame
                 $returnArray = array(
                     "messages" => $this->messages,
                     "playerHands" => $this->getPlayerHands(),
-                    "bankHand" => $this->bank->getCardStrings()
+                    "bankHand" => $this->bank->getCardStrings(),
+                    "gameState" => $this->gameState
+
                 );
             }
             else{
@@ -129,7 +150,9 @@ class BlackJackGame
                 $returnArray = array(
                     "messages" => $this->messages,
                     "playerHands" => $this->getPlayerHands(),
-                    "bankHand" => $this->bank->getCardStrings()
+                    "bankHand" => $this->bank->getCardStrings(),
+                    "gameState" => $this->gameState
+
                 );
             }
         }
@@ -210,7 +233,47 @@ class BlackJackGame
             "bankHand" => $this->bank->getCardStrings(),
             "bankScore" => $this->bank->getTotalPoints(),
             "gameOver" => $this->gameOver,
-            "messages" => $this->messages
+            "messages" => $this->messages,
+            "gameState" => $this->gameState,
+            "playerBets" => $this->getPlayerBets(),
         );
+    }
+
+    /**
+     * Add a player bet.
+     * 
+     * @param int $playerId The player id.
+     * @param int $bet The bet.
+     * @return void
+     */
+    public function addPlayerBet(int $playerId, int $bet): void
+    {
+        $this->players[$playerId]->addBet($bet);
+        $this->players[$playerId]->stopBetting();
+    }
+
+    /**
+     * Get the player bets.
+     *
+     * @return array<int> The player bets.
+     */
+    public function getPlayerBets(): array
+    {
+        $bets = [];
+        foreach ($this->players as $player) {
+            $bets[] = $player->getBet();
+        }
+        return $bets;
+    }
+
+    /**
+     * Set game state.
+     * 
+     * @param string $gameState The game state.
+     * @return void
+     */
+    public function setGameState(string $gameState): void
+    {
+        $this->gameState = $gameState;
     }
 }
