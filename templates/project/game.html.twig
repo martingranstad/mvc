@@ -3,10 +3,11 @@
 {% block title %}Twenty One{% endblock %}
 
 {% block body %}
-    {{ include('_flash.html.twig') }}
     <h1>Black Jack</h1>
     <p>
         Du spelar nu Black Jack. Lycka till {{ name }}!
+
+        Du har {{ playerBalance }} kr att spela för.
 
         Minsta bett är 10 kr och max bett är 100 kr.
     </p>
@@ -15,6 +16,14 @@
         {% for card in bankHand %}
             {{ card }}
         {% endfor %}
+        <br>
+        <h2>Lekens "True Count"</h2>
+        <p>True count: {{ trueCount }}</p>
+        <p>
+            Här är lekens nuvarande true count enligt Hi-Lo systemet. True count är en indikation på hur mycket fördel du har som spelare.
+            En hög true count indikerar att det är dags att satsa mer pengar och en låg true count indikerar att det är dags att satsa mindre pengar.
+            Den beräknas enligt systemet på denna sida: <a href="https://www.blackjackapprenticeship.com/how-to-count-cards/">Blackjack Apprenticeship</a>.
+        </p>
     {% endif %}
     {% for playerHand in playerHands %}
         <h2>Hand {{ loop.index }}</h2>
@@ -58,4 +67,6 @@
         <p>Du har stannat på denna hand. Spela färdigt de andra händerna.</p>
         {% endif %}
     {% endfor %}
+    
+
 {% endblock %}

@@ -15,6 +15,8 @@ class BlackJackGame
     private string $gameState;
     private int $playerBalance;
     private array $playersWon;
+    private int $runningCount;
+    private float $trueCount;
     
     /**
      * Constructor for the class representing a game of Blackjack.
@@ -40,6 +42,9 @@ class BlackJackGame
         $this->playerBalance = 0;
         $this->playersWon = [];
 
+        $this->runningCount = 0;
+        $this->trueCount = 0;
+
         
         foreach ($this->players as $player) {
             $this->messages[] = "";
@@ -48,7 +53,26 @@ class BlackJackGame
         }
         
         $this->bank->reset();
-        $this->bank->addCard($this->deck->drawCards(1)[0]);
+        $firstCard = $this->deck->drawCards(1)[0];
+        $this->addCardToCount($firstCard); 
+        $this->bank->addCard($firstCard);
+    }
+
+    /**
+     * Add a card to the count.
+     * 
+     * @param Card $card The card to add to the count.
+     * @return void
+     */
+    public function addCardToCount(Card $card): void
+    {
+        if ($card->getPoints() >= 10) {
+            $this->runningCount -= 1;
+        } else if ($card->getPoints() <= 6) {
+            $this->runningCount += 1;
+        }
+
+        $this->trueCount = $this->runningCount / ($this->deck->getNumCards() / 52);
     }
 
     /**
@@ -196,7 +220,9 @@ class BlackJackGame
      */
     public function givePlayerCard(int $playerId): void
     {
-        $this->players[$playerId]->addCard($this->deck->drawCards(1)[0]);
+        $card = $this->deck->drawCards(1)[0];
+        $this->addCardToCount($card);
+        $this->players[$playerId]->addCard($card);
         $this->message = "You drew a card!";
     }
 
@@ -240,7 +266,8 @@ class BlackJackGame
             "playerBets" => $this->getPlayerBets(),
             "playersPlaying" => $this->getPlayersPlaying(),
             "playerBalance" => $this->playerBalance,
-            "playersWon" => $this->playersWon
+            "playersWon" => $this->playersWon,
+            "trueCount" => $this->trueCount
         );
     }
 

@@ -4,7 +4,8 @@
 
 {% block body %}
 <h1>Game Over</h1>
-{{ include('_flash.html.twig') }}
+<p>Du har nu {{ playerBalance }} kr kvar att spela för.</p>
+
 {% for playerHand in playerHands %}
     <h2>Hand {{ loop.index }}</h2>
     <h3>Player Cards</h3>

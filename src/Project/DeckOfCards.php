@@ -107,5 +107,4 @@ class DeckOfCards
     {
         return $this->cards;
     }
-
 }
