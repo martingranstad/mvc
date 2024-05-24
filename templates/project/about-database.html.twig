@@ -1,0 +1,49 @@
+{% extends "project/base.html.twig" %}
+
+{% block title %}Om projektet{% endblock %}
+
+{% block body %}
+    <h1>Om databasen</h1>
+    <h2>Er-diagram</h2>
+    <a href="{{ asset('img/projectdb.drawio.png') }}">
+        <img src="{{ asset('img/projectdb.drawio.png') }}" alt="">
+    </a>
+    <h2>Tabeller</h2>
+    <h3>player</h3>
+    <p>Tabellen innehåller spelares namn och saldo.</p>
+    <h3>GameRecord</h3>
+    <p>Tabellen innehåller information om varje spelomgång med 
+        vem som spelade, hur mycket den vann eller förlorade och tidsstämpel för när spelet slutfördes.</p>
+    
+    <h3>Förklara hur du löste eventuella relationer mellan tabellerna</h3>
+    <p>Jag hade inga relationer mellan tabellerna.</p>
+
+    <h3>Berätta om du använde SQLite eller någon annan databas.</h3>
+    <p>Jag använde SQLite.</p>
+
+    <h3>ORM vs arbetssättet i DBkursen</h3>
+    <p>Jämfört med hur vi arbetade i databaskursen så upplevdes detta som betydligt mer lättillgängligt.
+        Det krävdes avsevärt mindre fixande för att få något så enkelt som CRUD att fungera när vi arbetade med det i kmom05.
+        Det blir dock givetvis lite mer av magi känslan där det kanske är lätthänt att man inte förstår hur varje steg går till då en hel del genereras automatiskt.
+        Om man ser till att titta igenom koden när den genereras så är det dock inga problem att förstå vad som händer.
+    </p>
+    <p>
+        Att arbeta med en ORM förenklar saker och ting. Det blir färre steg och mindre tidskrävande än att arbeta med procedurer sparade i databasen.
+        Eftersom att det är möjligt att lägga till egna querys till ett repository så verkar flexibiliteten vara ganska stor också.
+        Att det blir mindre bundet till en specifik databas är också en fördel.  
+    </p>
+    <p>
+        Jag kan tänka mig att det är en fördel att arbeta med migrations för att uppdatera databasen.
+        Det är enkelt att se vad som har ändrats och det är enkelt att ångra en migration om det skulle behövas.
+        Kommandorads verktygen för att skapa en ny entity var också trevligt.
+    </p>
+    <p>
+        Jag reagerade på att det inte per automatik var så att man själv valde primary key för en tabell.
+        Det är väl säkert eftersom att ORM:en själv kan hantera det men på mina tabeller hade det inte behövts
+        någon separat id kolumn för att det skulle fungera. Det är förmodligen en av nackdelarna att arbeta med ORM 
+        och färdiga lösningar i allmänhet. Det åker med mycket onödigt extra som kanske inte behövs egentligen för en lösning.
+    </p>
+    <h3>Enhetstester</h3>
+    <p>Jag gjorde inga enhetstester för databasen.</p>
+
+{% endblock %}
