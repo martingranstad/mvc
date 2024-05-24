@@ -13,6 +13,8 @@ class BlackJackGame
     private $deck;
     private $bank;
     private string $gameState;
+    private int $playerBalance;
+    private array $playersWon;
     
     /**
      * Constructor for the class representing a game of Blackjack.
@@ -35,7 +37,9 @@ class BlackJackGame
         $this->deck = $deck;
         $this->deck->shuffleDeck();
 
-        var_dump($this->players);
+        $this->playerBalance = 0;
+        $this->playersWon = [];
+
         
         foreach ($this->players as $player) {
             $this->messages[] = "";
@@ -115,15 +119,19 @@ class BlackJackGame
         for ($i = 0; $i < count($this->players); $i++) {
             if ($this->bustedPlayers[$i]) {
                 $this->messages[$i] = "You got over 21 and lost!";
+                $this->playersWon[$i] = false;
             }
             else if ($bankPoints > 21) {
                 $this->messages[$i] = "The bank got over 21 so your hand won!";
+                $this->playersWon[$i] = true;
             }
             else if ($bankPoints >= $this->players[$i]->getTotalPoints()) {
                 $this->messages[$i] = "The bank won over this hand!";
+                $this->playersWon[$i] = false;
             }
             else{
                 $this->messages[$i] = "This hand had more points than the bank and won!";
+                $this->playersWon[$i] = true;
             }
         }
         
@@ -152,6 +160,18 @@ class BlackJackGame
         return $this->messages;
     }
 
+    /**
+     * Set the player balance.
+     * 
+     * 
+     * @param int $playerBalance The player balance.
+     * @return void
+     */
+    public function setPlayerBalance(int $playerBalance): void
+    {
+        $this->playerBalance = $playerBalance;
+    }
+    
     /**
      * Gets the player's score and hand.
      *
@@ -218,7 +238,9 @@ class BlackJackGame
             "messages" => $this->messages,
             "gameState" => $this->gameState,
             "playerBets" => $this->getPlayerBets(),
-            "playersPlaying" => $this->getPlayersPlaying()
+            "playersPlaying" => $this->getPlayersPlaying(),
+            "playerBalance" => $this->playerBalance,
+            "playersWon" => $this->playersWon
         );
     }
 
