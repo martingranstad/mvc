@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\Player as PlayerEntity;
+use App\Entity\GameRecord;
 use Doctrine\Persistence\ManagerRegistry;
 
 use App\Project\Card;
@@ -198,15 +199,29 @@ class ProjectController extends AbstractController
         // Give money to the player for each hand if they are a win
         $player = $doctrine->getRepository(PlayerEntity::class)->findOneBy(['name' => $session->get("name")]);
         $newPlayerBalance = $player->getMoney();
-        var_dump($gameResult);
+
+        $difference = 0;
+
         foreach ($gameResult['playersWon'] as $index => $winner) {
             if ($winner) {
+                $difference += $gameResult['playerBets'][$index];
                 $newPlayerBalance += $gameResult['playerBets'][$index] * 2;
+            } else {
+                $difference -= $gameResult['playerBets'][$index];
             }
         }
         $player->setMoney($newPlayerBalance);
         $doctrine->getManager()->persist($player);
         $doctrine->getManager()->flush();
+
+        // Updates GameRecord table with the result of the game
+        $gameRecord = new GameRecord();
+        $gameRecord->setPlayerName($player->getName());
+        $gameRecord->setResult($difference);
+        $gameRecord->setTime(new \DateTime());
+        $doctrine->getManager()->persist($gameRecord);
+        $doctrine->getManager()->flush();
+        
 
         $session->clear();
         return $this->render('project/game-over.html.twig', $gameResult);

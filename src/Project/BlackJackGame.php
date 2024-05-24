@@ -117,7 +117,7 @@ class BlackJackGame
         
         $returnArray = [];
         for ($i = 0; $i < count($this->players); $i++) {
-            if ($this->bustedPlayers[$i]) {
+            if ($this->players[$i]->getTotalPoints() > 21) {
                 $this->messages[$i] = "You got over 21 and lost!";
                 $this->playersWon[$i] = false;
             }
