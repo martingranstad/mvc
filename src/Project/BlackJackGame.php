@@ -44,6 +44,7 @@ class BlackJackGame
         }
         
         $this->bank->reset();
+        $this->bank->addCard($this->deck->drawCards(1)[0]);
     }
 
     /**
@@ -56,12 +57,7 @@ class BlackJackGame
         $playersPlaying = false;
 
         if ($this->gameOver) {
-            return array(
-                "messages" => $this->messages,
-                "playerHands" => $this->getPlayerHands(),
-                "bankHand" => $this->bank->getCardStrings(),
-                "gameState" => $this->gameState
-            );
+            return $this->getGameState();
         }
 
         // If none of the players are betting set the game state to playing
@@ -76,6 +72,7 @@ class BlackJackGame
         } else {
             $this->gameState = "playing";
         }
+
 
         for ($i = 0; $i < count($this->players); $i++) {
             if ($this->bustedPlayers[$i]) {
@@ -118,48 +115,21 @@ class BlackJackGame
         for ($i = 0; $i < count($this->players); $i++) {
             if ($this->bustedPlayers[$i]) {
                 $this->messages[$i] = "You got over 21 and lost!";
-                $returnArray = array(
-                    "messages" => $this->messages,
-                    "playerHands" => $this->getPlayerHands(),
-                    "bankHand" => $this->bank->getCardStrings(),
-                    "gameState" => $this->gameState
-                );
             }
             else if ($bankPoints > 21) {
-                $this->messages[i] = "The bank got over 21 so your hand won!";
-                $returnArray = array(
-                    "messages" => $this->messages,
-                    "playerHands" => $this->getPlayerHands(),
-                    "bankHand" => $this->bank->getCardStrings(),
-                    "gameState" => $this->gameState
-
-                );
+                $this->messages[$i] = "The bank got over 21 so your hand won!";
             }
             else if ($bankPoints >= $this->players[$i]->getTotalPoints()) {
                 $this->messages[$i] = "The bank won over this hand!";
-                $returnArray = array(
-                    "messages" => $this->messages,
-                    "playerHands" => $this->getPlayerHands(),
-                    "bankHand" => $this->bank->getCardStrings(),
-                    "gameState" => $this->gameState
-
-                );
             }
             else{
                 $this->messages[$i] = "This hand had more points than the bank and won!";
-                $returnArray = array(
-                    "messages" => $this->messages,
-                    "playerHands" => $this->getPlayerHands(),
-                    "bankHand" => $this->bank->getCardStrings(),
-                    "gameState" => $this->gameState
-
-                );
             }
         }
         
         
 
-        return $returnArray;
+        return $this->getGameState();
     }
 
     /**
@@ -222,6 +192,18 @@ class BlackJackGame
     }
 
     /**
+     * Doubles the player's bet and draws a card and stops the player from playing.
+     * 
+     * @return void
+     */
+    public function doublePlayerBet(int $playerId): void
+    {
+        $this->players[$playerId]->addBet($this->players[$playerId]->getBet());
+        $this->players[$playerId]->addCard($this->deck->drawCards(1)[0]);
+        $this->players[$playerId]->stopPlaying();
+    }
+
+    /**
      * Get game state.
      *
      * @return array{playerHand: array<string>, playerScore: int, bankHand: array<string>, bankScore: int, gameOver: bool, message: string} The game state.
@@ -236,8 +218,24 @@ class BlackJackGame
             "messages" => $this->messages,
             "gameState" => $this->gameState,
             "playerBets" => $this->getPlayerBets(),
+            "playersPlaying" => $this->getPlayersPlaying()
         );
     }
+
+    /**
+     * Get the players playing status
+     * 
+     * @return array<bool> The players playing status.
+     */
+    public function getPlayersPlaying(): array
+    {
+        $playersPlaying = [];
+        foreach ($this->players as $player) {
+            $playersPlaying[] = $player->isPlaying();
+        }
+        return $playersPlaying;
+    }
+
 
     /**
      * Add a player bet.
@@ -275,5 +273,15 @@ class BlackJackGame
     public function setGameState(string $gameState): void
     {
         $this->gameState = $gameState;
+    }
+
+    /**
+     * Get game deck
+     * 
+     * @return DeckOfCards The game deck.
+     */
+    public function getDeck(): DeckOfCards
+    {
+        return $this->deck;
     }
 }

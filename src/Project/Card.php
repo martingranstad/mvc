@@ -53,7 +53,11 @@ class Card
 
         $this->suit = $suit;
         $this->value = $value;
-        $this->points = $value;
+        if ($value > 10) {
+            $this->points = 10;
+        } else {
+            $this->points = $value;
+        }
 
         echo($this->getCardString());
     }

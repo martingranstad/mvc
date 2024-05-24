@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 use App\Project\Card;
 use App\Project\CardHand;
@@ -20,6 +21,11 @@ class ProjectController extends AbstractController
     public function project(): Response
     {
         return $this->render('project/proj.html.twig');
+    }
+    #[Route("proj/api", name: "proj-api")]
+    public function api(): Response
+    {
+        return $this->render('project/api.html.twig');
     }
 
 
@@ -124,6 +130,25 @@ class ProjectController extends AbstractController
         return $this->redirectToRoute("proj-game");
     }
 
+    // Post route that plays double move
+    #[Route("/proj/game/double", name: "proj-game-double", methods: ['POST'])]
+    public function double(
+        SessionInterface $session
+    ): Response {
+        /** @var TwentyOneGame|null $game */
+        $game = $session->get("game");
+        if (!$game) {
+            throw new Exception("No game in session");
+        }
+        $handId = $_POST['hand'];
+        $game->doublePlayerBet($handId);
+        $this->addFlash(
+            'notice',
+            $game->getMessage()[$handId]
+        );
+        return $this->redirectToRoute("proj-game");
+    }
+
     //Game over route that displays player and dealer cards and resets the session
     #[Route("/proj/game-over", name: "proj-game-over")]
     public function gameOver(
@@ -138,23 +163,5 @@ class ProjectController extends AbstractController
         return $this->render('project/game-over.html.twig', $gameResult);
     }
 
-    //Route for api/game that shows the current game state
-    #[Route("/proj/api/game", name: "proj-api-game", methods: ['GET'])]
-    public function apiGame(
-        SessionInterface $session
-    ): Response {
-        /** @var TwentyOneGame|null $game */
-        $game = $session->get("game");
-        if (!$game) {
-            throw new Exception("No game in session");
-        }
-        $data = $game->getGameState();
-
-        $response = new JsonResponse($data);
-        $response->setEncodingOptions(
-            $response->getEncodingOptions() | JSON_PRETTY_PRINT
-        );
-        return $response;
-    }
 
 }
