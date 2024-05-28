@@ -17,7 +17,7 @@ class BlackJackGame
     private array $playersWon;
     private int $runningCount;
     private float $trueCount;
-    
+
     /**
      * Constructor for the class representing a game of Blackjack.
      *
@@ -45,22 +45,22 @@ class BlackJackGame
         $this->runningCount = 0;
         $this->trueCount = 0;
 
-        
+
         foreach ($this->players as $player) {
             $this->messages[] = "";
             $this->bustedPlayers[] = false;
             $player->reset();
         }
-        
+
         $this->bank->reset();
         $firstCard = $this->deck->drawCards(1)[0];
-        $this->addCardToCount($firstCard); 
+        $this->addCardToCount($firstCard);
         $this->bank->addCard($firstCard);
     }
 
     /**
      * Add a card to the count.
-     * 
+     *
      * @param Card $card The card to add to the count.
      * @return void
      */
@@ -68,10 +68,9 @@ class BlackJackGame
     {
         if ($card->getPoints() >= 10) {
             $this->runningCount -= 1;
-        } else if ($card->getPoints() <= 6) {
+        } elseif ($card->getPoints() <= 6) {
             $this->runningCount += 1;
         }
-
         $this->trueCount = $this->runningCount / ($this->deck->getNumCards() / 52);
     }
 
@@ -119,11 +118,11 @@ class BlackJackGame
                 $playersPlaying = true;
             }
         }
-        
+
         if (!$playersPlaying) {
             return $this->playBank();
         }
-        
+
         return $this->gameState;
     }
 
@@ -137,29 +136,26 @@ class BlackJackGame
         $bankPoints = $this->bank->playAndReturnPoints($this->deck);
 
         $this->gameOver = true;
-        
-        
+
+
         $returnArray = [];
         for ($i = 0; $i < count($this->players); $i++) {
             if ($this->players[$i]->getTotalPoints() > 21) {
                 $this->messages[$i] = "You got over 21 and lost!";
                 $this->playersWon[$i] = false;
-            }
-            else if ($bankPoints > 21) {
+            } elseif ($bankPoints > 21) {
                 $this->messages[$i] = "The bank got over 21 so your hand won!";
                 $this->playersWon[$i] = true;
-            }
-            else if ($bankPoints >= $this->players[$i]->getTotalPoints()) {
+            } elseif ($bankPoints >= $this->players[$i]->getTotalPoints()) {
                 $this->messages[$i] = "The bank won over this hand!";
                 $this->playersWon[$i] = false;
-            }
-            else{
+            } else {
                 $this->messages[$i] = "This hand had more points than the bank and won!";
                 $this->playersWon[$i] = true;
             }
         }
-        
-        
+
+
 
         return $this->getGameState();
     }
@@ -186,8 +182,8 @@ class BlackJackGame
 
     /**
      * Set the player balance.
-     * 
-     * 
+     *
+     *
      * @param int $playerBalance The player balance.
      * @return void
      */
@@ -195,11 +191,11 @@ class BlackJackGame
     {
         $this->playerBalance = $playerBalance;
     }
-    
+
     /**
      * Gets the player's score and hand.
      *
-     * @return array{playerHand: array<string>, playerScore: int} The player's score and hand.
+     * @return array{array<int<0, max>, array{playerHand: mixed, playerScore: mixed}>} The player's score and hand.
      */
     public function getPlayerHands(): array
     {
@@ -210,7 +206,7 @@ class BlackJackGame
                 "playerScore" => $player->getTotalPoints()
             );
         }
-        return $playerHands; 
+        return $playerHands;
     }
 
     /**
@@ -223,7 +219,7 @@ class BlackJackGame
         $card = $this->deck->drawCards(1)[0];
         $this->addCardToCount($card);
         $this->players[$playerId]->addCard($card);
-        $this->message = "You drew a card!";
+        $this->messages[$playerId] = "You drew a card!";
     }
 
     /**
@@ -234,12 +230,12 @@ class BlackJackGame
     public function stopPlayerPlaying(int $playerId): void
     {
         $this->players[$playerId]->stopPlaying();
-        $this->message = "You stopped playing the hand";
+        $this->messages[$playerId] = "You stopped playing the hand";
     }
 
     /**
      * Doubles the player's bet and draws a card and stops the player from playing.
-     * 
+     *
      * @return void
      */
     public function doublePlayerBet(int $playerId): void
@@ -252,7 +248,9 @@ class BlackJackGame
     /**
      * Get game state.
      *
-     * @return array{playerHand: array<string>, playerScore: int, bankHand: array<string>, bankScore: int, gameOver: bool, message: string} The game state.
+     * @return array{playerHands: array<string, array<string>|int>, bankHand: array<string>, bankScore: int,
+     * gameOver: bool, messages: array<string>, gameState: string, playerBets: array<int>,
+     * playersPlaying: array<bool>, playerBalance: int, playersWon: array<bool>, trueCount: float}.
      */
     public function getGameState(): array
     {
@@ -273,7 +271,7 @@ class BlackJackGame
 
     /**
      * Get the players playing status
-     * 
+     *
      * @return array<bool> The players playing status.
      */
     public function getPlayersPlaying(): array
@@ -288,7 +286,7 @@ class BlackJackGame
 
     /**
      * Add a player bet.
-     * 
+     *
      * @param int $playerId The player id.
      * @param int $bet The bet.
      * @return void
@@ -315,7 +313,7 @@ class BlackJackGame
 
     /**
      * Set game state.
-     * 
+     *
      * @param string $gameState The game state.
      * @return void
      */
@@ -326,11 +324,42 @@ class BlackJackGame
 
     /**
      * Get game deck
-     * 
+     *
      * @return DeckOfCards The game deck.
      */
     public function getDeck(): DeckOfCards
     {
         return $this->deck;
+    }
+
+    /**
+     * Get the running count.
+     *
+     * @return int The running count.
+     */
+    public function getRunningCount(): int
+    {
+        return $this->runningCount;
+    }
+
+    /**
+     * Get the true count.
+     *
+     * @return float The true count.
+     */
+    public function getTrueCount(): float
+    {
+        return $this->trueCount;
+    }
+
+    /**
+     * Set the game over status.
+     *
+     * @param bool $gameOver The game over status.
+     * @return void
+     */
+    public function setGameOver(bool $gameOver): void
+    {
+        $this->gameOver = $gameOver;
     }
 }

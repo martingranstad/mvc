@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace App\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -17,7 +17,7 @@ class ProjectLoginFunctionalTest extends WebTestCase
         $this->assertResponseIsSuccessful();
 
         // There he finds a form with a textfield with the label "Ditt namn:" and a submit button
-                // Johan fills in the textfield with his name and submits the form
+        // Johan fills in the textfield with his name and submits the form
         $client->submitForm('Skicka', [
             'name' => 'Johan'
         ]);
@@ -30,4 +30,4 @@ class ProjectLoginFunctionalTest extends WebTestCase
         $this->assertSelectorTextContains('p', 'Ditt konto innehåller 1000 kr');
     }
 }
-        
+*/

@@ -1,10 +1,253 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit" tests="3" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.434693">
-    <testsuite name="App\Tests\ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" tests="3" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.434693">
-      <testcase name="testProjectRouteFormExists" class="App\Tests\ProjectLoginUnitTest" classname="App.Tests.ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" line="9" assertions="3" time="0.389100"/>
-      <testcase name="testProjectRouteFormHasCorrectLabel" class="App\Tests\ProjectLoginUnitTest" classname="App.Tests.ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" line="20" assertions="2" time="0.024202"/>
-      <testcase name="testProjectRouteFormMethodIsPost" class="App\Tests\ProjectLoginUnitTest" classname="App.Tests.ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" line="29" assertions="1" time="0.021391"/>
+  <testsuite name="" tests="86" assertions="145" errors="0" warnings="0" failures="0" skipped="0" time="0.918357">
+    <testsuite name="Project Test Suite" tests="86" assertions="145" errors="0" warnings="0" failures="0" skipped="0" time="0.918357">
+      <testsuite name="BankTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/BankTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.016582">
+        <testcase name="testPlayAndReturnPointsNotPlaying" class="BankTest" classname="BankTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/BankTest.php" line="11" assertions="1" time="0.014342">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠][A♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testPlayAndReturnPointsCardHandLessThan17" class="BankTest" classname="BankTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/BankTest.php" line="23" assertions="1" time="0.001375">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠][A♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testPlayAndReturnPointsCardHandMoreThan17" class="BankTest" classname="BankTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/BankTest.php" line="34" assertions="1" time="0.000865">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠][5♠][K♠]</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="CardHandTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/CardHandTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.003942">
+        <testcase name="testGetCardStrings" class="CardHandTest" classname="CardHandTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/CardHandTest.php" line="10" assertions="1" time="0.000446">
+          <system-out>[A♠][3♥]</system-out>
+        </testcase>
+        <testcase name="testGetTotalPoints" class="CardHandTest" classname="CardHandTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/CardHandTest.php" line="23" assertions="1" time="0.000475">
+          <system-out>[K♥][Q♦][5♣]</system-out>
+        </testcase>
+        <testcase name="testAddCard" class="CardHandTest" classname="CardHandTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/CardHandTest.php" line="37" assertions="1" time="0.000475">
+          <system-out>[A♠][K♥]</system-out>
+        </testcase>
+        <testcase name="testInvalidCard" class="CardHandTest" classname="CardHandTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/CardHandTest.php" line="51" assertions="1" time="0.002546">
+          <system-out>[A♠]</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Cards\CardTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/CardTest.php" tests="5" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.003292">
+        <testcase name="testValidCard" class="App\Cards\CardTest" classname="App.Cards.CardTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/CardTest.php" line="18" assertions="1" time="0.001113">
+          <system-out>[2♥]</system-out>
+        </testcase>
+        <testcase name="testInvalidSuit" class="App\Cards\CardTest" classname="App.Cards.CardTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/CardTest.php" line="28" assertions="1" time="0.000534"/>
+        <testcase name="testInvalidValue" class="App\Cards\CardTest" classname="App.Cards.CardTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/CardTest.php" line="38" assertions="1" time="0.000571"/>
+        <testcase name="testGetCardString" class="App\Cards\CardTest" classname="App.Cards.CardTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/CardTest.php" line="47" assertions="1" time="0.000606">
+          <system-out>[J♣]</system-out>
+        </testcase>
+        <testcase name="testSetPoints" class="App\Cards\CardTest" classname="App.Cards.CardTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/CardTest.php" line="56" assertions="1" time="0.000468">
+          <system-out>[4♦]</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Cards\DeckOfCardsTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/DeckOfCardsTest.php" tests="4" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.015222">
+        <testcase name="testGetCardStrings" class="App\Cards\DeckOfCardsTest" classname="App.Cards.DeckOfCardsTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/DeckOfCardsTest.php" line="10" assertions="1" time="0.002845">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testShuffleDeck" class="App\Cards\DeckOfCardsTest" classname="App.Cards.DeckOfCardsTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/DeckOfCardsTest.php" line="17" assertions="1" time="0.010531">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testGetNumCards" class="App\Cards\DeckOfCardsTest" classname="App.Cards.DeckOfCardsTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/DeckOfCardsTest.php" line="28" assertions="1" time="0.000855">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testDrawCards" class="App\Cards\DeckOfCardsTest" classname="App.Cards.DeckOfCardsTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/DeckOfCardsTest.php" line="36" assertions="2" time="0.000991">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="JokerDeckOfCardsTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/JokerDeckOfCardsTest.php" tests="2" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="0.003022">
+        <testcase name="testConstructorWithDefaultNumJokers" class="JokerDeckOfCardsTest" classname="JokerDeckOfCardsTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/JokerDeckOfCardsTest.php" line="9" assertions="3" time="0.001445">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠][🃏][🃏]</system-out>
+        </testcase>
+        <testcase name="testConstructorWithCustomNumJokers" class="JokerDeckOfCardsTest" classname="JokerDeckOfCardsTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/JokerDeckOfCardsTest.php" line="21" assertions="5" time="0.001577">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠][🃏][🃏][🃏][🃏]</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="PlayerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/PlayerTest.php" tests="3" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.003648">
+        <testcase name="testReset" class="PlayerTest" classname="PlayerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/PlayerTest.php" line="10" assertions="3" time="0.000910"/>
+        <testcase name="testStopPlaying" class="PlayerTest" classname="PlayerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/PlayerTest.php" line="22" assertions="2" time="0.002031"/>
+        <testcase name="testAddCard" class="PlayerTest" classname="PlayerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/PlayerTest.php" line="33" assertions="2" time="0.000707">
+          <system-out>[A♠]</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Cards\TwentyOneGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/TwentyOneGameTest.php" tests="9" assertions="26" errors="0" warnings="0" failures="0" skipped="0" time="0.014365">
+        <testcase name="testPlayGameGameIsOver" class="App\Cards\TwentyOneGameTest" classname="App.Cards.TwentyOneGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/TwentyOneGameTest.php" line="14" assertions="5" time="0.003020">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testPlayGamePlayerBusts" class="App\Cards\TwentyOneGameTest" classname="App.Cards.TwentyOneGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/TwentyOneGameTest.php" line="35" assertions="5" time="0.001178">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠][K♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testPlayGamePlayerIsPlaying" class="App\Cards\TwentyOneGameTest" classname="App.Cards.TwentyOneGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/TwentyOneGameTest.php" line="55" assertions="1" time="0.001411">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testPlayGameBankBusts" class="App\Cards\TwentyOneGameTest" classname="App.Cards.TwentyOneGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/TwentyOneGameTest.php" line="67" assertions="4" time="0.001092">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠][K♠][8♠][K♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testPlayGameBankWins" class="App\Cards\TwentyOneGameTest" classname="App.Cards.TwentyOneGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/TwentyOneGameTest.php" line="90" assertions="4" time="0.001092">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠][10♠][8♠][J♠][10♠]</system-out>
+        </testcase>
+        <testcase name="testPlayGamePlayerWins" class="App\Cards\TwentyOneGameTest" classname="App.Cards.TwentyOneGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/TwentyOneGameTest.php" line="113" assertions="4" time="0.001143">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠][10♠][8♠][10♠][7♠]</system-out>
+        </testcase>
+        <testcase name="testGetGameState" class="App\Cards\TwentyOneGameTest" classname="App.Cards.TwentyOneGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/TwentyOneGameTest.php" line="136" assertions="1" time="0.001893">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testStopPlayerPlaying" class="App\Cards\TwentyOneGameTest" classname="App.Cards.TwentyOneGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/TwentyOneGameTest.php" line="148" assertions="1" time="0.001805">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testGetMessage" class="App\Cards\TwentyOneGameTest" classname="App.Cards.TwentyOneGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Cards/TwentyOneGameTest.php" line="160" assertions="1" time="0.001732">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Project\BankTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BankTest.php" tests="3" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.007744">
+        <testcase name="testPlayAndReturnPointsNotPlaying" class="App\Project\BankTest" classname="App.Project.BankTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BankTest.php" line="11" assertions="1" time="0.005565">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠][A♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testPlayAndReturnPointsCardHandLessThan17" class="App\Project\BankTest" classname="App.Project.BankTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BankTest.php" line="23" assertions="1" time="0.001067">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠][A♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testPlayAndReturnPointsCardHandMoreThan17" class="App\Project\BankTest" classname="App.Project.BankTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BankTest.php" line="34" assertions="1" time="0.001112">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠][5♠][K♠][3♠]</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Project\BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" tests="23" assertions="34" errors="0" warnings="0" failures="0" skipped="0" time="0.044067">
+        <testcase name="testConstructorWithValidNumberOfPlayers" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="16" assertions="1" time="0.003824">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testConstructorWithInvalidNumberOfPlayers" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="31" assertions="2" time="0.001666">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testAddCardToCount" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="48" assertions="3" time="0.001113">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠][7♠][K♥][2♦]</system-out>
+        </testcase>
+        <testcase name="testPlayGameWhenGameOver" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="75" assertions="1" time="0.001276">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testPlayGameWhenNotBetting" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="93" assertions="1" time="0.001156">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testPlayGameWhenBetting" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="111" assertions="1" time="0.001523">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testPlayGamePlayersOver21" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="128" assertions="1" time="0.003085">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testGetRunningCount" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="146" assertions="1" time="0.002073">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testGetTrueCount" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="163" assertions="1" time="0.002009">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testSetGameOver" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="180" assertions="1" time="0.001978">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testGetPlayerBets" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="196" assertions="1" time="0.001267">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testSetGameState" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="214" assertions="1" time="0.001942">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testGetDeck" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="232" assertions="1" time="0.001142">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testGetPlayersPlaying" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="249" assertions="3" time="0.003447">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testAddPlayerBet" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="268" assertions="2" time="0.001196">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testDoublePlayerBet" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="288" assertions="3" time="0.001310">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testGetGameState" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="312" assertions="1" time="0.001343">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testGetMessage" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="326" assertions="1" time="0.002127">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testSetPlayerBalance" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="344" assertions="1" time="0.002462">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testGivePlayerCard" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="362" assertions="2" time="0.002271">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testStopPlayerPlaying" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="383" assertions="2" time="0.002062">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testGameIsOverAfterPlayBank" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="403" assertions="1" time="0.001903">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testMessagesWhenAndPlayersWonWhenBusted" class="App\Project\BlackJackGameTest" classname="App.Project.BlackJackGameTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/BlackJackGameTest.php" line="420" assertions="2" time="0.001893">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Project\CardHandTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/CardHandTest.php" tests="4" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.003149">
+        <testcase name="testGetCardStrings" class="App\Project\CardHandTest" classname="App.Project.CardHandTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/CardHandTest.php" line="10" assertions="1" time="0.000605">
+          <system-out>[A♠][3♥]</system-out>
+        </testcase>
+        <testcase name="testGetTotalPoints" class="App\Project\CardHandTest" classname="App.Project.CardHandTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/CardHandTest.php" line="23" assertions="1" time="0.000646">
+          <system-out>[K♥][Q♦][5♣]</system-out>
+        </testcase>
+        <testcase name="testAddCard" class="App\Project\CardHandTest" classname="App.Project.CardHandTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/CardHandTest.php" line="37" assertions="1" time="0.000575">
+          <system-out>[A♠][K♥]</system-out>
+        </testcase>
+        <testcase name="testInvalidCard" class="App\Project\CardHandTest" classname="App.Project.CardHandTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/CardHandTest.php" line="51" assertions="1" time="0.001324">
+          <system-out>[A♠]</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Project\CardTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/CardTest.php" tests="5" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.004741">
+        <testcase name="testValidCard" class="App\Project\CardTest" classname="App.Project.CardTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/CardTest.php" line="18" assertions="1" time="0.000914">
+          <system-out>[2♥]</system-out>
+        </testcase>
+        <testcase name="testInvalidSuit" class="App\Project\CardTest" classname="App.Project.CardTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/CardTest.php" line="28" assertions="1" time="0.001012"/>
+        <testcase name="testInvalidValue" class="App\Project\CardTest" classname="App.Project.CardTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/CardTest.php" line="38" assertions="1" time="0.001163"/>
+        <testcase name="testGetCardString" class="App\Project\CardTest" classname="App.Project.CardTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/CardTest.php" line="47" assertions="1" time="0.000814">
+          <system-out>[J♣]</system-out>
+        </testcase>
+        <testcase name="testSetPoints" class="App\Project\CardTest" classname="App.Project.CardTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/CardTest.php" line="56" assertions="1" time="0.000839">
+          <system-out>[4♦]</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Project\DeckOfCardsTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/DeckOfCardsTest.php" tests="4" assertions="5" errors="0" warnings="0" failures="0" skipped="0" time="0.008749">
+        <testcase name="testGetCardStrings" class="App\Project\DeckOfCardsTest" classname="App.Project.DeckOfCardsTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/DeckOfCardsTest.php" line="10" assertions="1" time="0.001110">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testShuffleDeck" class="App\Project\DeckOfCardsTest" classname="App.Project.DeckOfCardsTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/DeckOfCardsTest.php" line="17" assertions="1" time="0.005343">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testGetNumCards" class="App\Project\DeckOfCardsTest" classname="App.Project.DeckOfCardsTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/DeckOfCardsTest.php" line="28" assertions="1" time="0.000968">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+        <testcase name="testDrawCards" class="App\Project\DeckOfCardsTest" classname="App.Project.DeckOfCardsTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/DeckOfCardsTest.php" line="36" assertions="2" time="0.001329">
+          <system-out>[A♥][2♥][3♥][4♥][5♥][6♥][7♥][8♥][9♥][10♥][J♥][Q♥][K♥][A♣][2♣][3♣][4♣][5♣][6♣][7♣][8♣][9♣][10♣][J♣][Q♣][K♣][A♦][2♦][3♦][4♦][5♦][6♦][7♦][8♦][9♦][10♦][J♦][Q♦][K♦][A♠][2♠][3♠][4♠][5♠][6♠][7♠][8♠][9♠][10♠][J♠][Q♠][K♠]</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Project\PlayerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/PlayerTest.php" tests="3" assertions="7" errors="0" warnings="0" failures="0" skipped="0" time="0.001878">
+        <testcase name="testReset" class="App\Project\PlayerTest" classname="App.Project.PlayerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/PlayerTest.php" line="10" assertions="3" time="0.000540"/>
+        <testcase name="testStopPlaying" class="App\Project\PlayerTest" classname="App.Project.PlayerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/PlayerTest.php" line="22" assertions="2" time="0.000633"/>
+        <testcase name="testAddCard" class="App\Project\PlayerTest" classname="App.Project.PlayerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/PlayerTest.php" line="33" assertions="2" time="0.000704">
+          <system-out>[A♠]</system-out>
+        </testcase>
+      </testsuite>
+      <testsuite name="App\Tests\ProjectControllerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/ProjectControllerTest.php" tests="9" assertions="19" errors="0" warnings="0" failures="0" skipped="0" time="0.625424">
+        <testcase name="testAboutRoute" class="App\Tests\ProjectControllerTest" classname="App.Tests.ProjectControllerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/ProjectControllerTest.php" line="9" assertions="2" time="0.410453"/>
+        <testcase name="testHomeRoute" class="App\Tests\ProjectControllerTest" classname="App.Tests.ProjectControllerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/ProjectControllerTest.php" line="19" assertions="2" time="0.025716"/>
+        <testcase name="testTitleInHomeRoute" class="App\Tests\ProjectControllerTest" classname="App.Tests.ProjectControllerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/ProjectControllerTest.php" line="30" assertions="3" time="0.039215"/>
+        <testcase name="testTitleInAboutRoute" class="App\Tests\ProjectControllerTest" classname="App.Tests.ProjectControllerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/ProjectControllerTest.php" line="40" assertions="3" time="0.023574"/>
+        <testcase name="testH1ExistsHomeRoute" class="App\Tests\ProjectControllerTest" classname="App.Tests.ProjectControllerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/ProjectControllerTest.php" line="50" assertions="2" time="0.024644"/>
+        <testcase name="testH1ExistsAboutRoute" class="App\Tests\ProjectControllerTest" classname="App.Tests.ProjectControllerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/ProjectControllerTest.php" line="60" assertions="2" time="0.021667"/>
+        <testcase name="testApiRoute" class="App\Tests\ProjectControllerTest" classname="App.Tests.ProjectControllerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/ProjectControllerTest.php" line="71" assertions="2" time="0.022093"/>
+        <testcase name="testAboutDatabaseRoute" class="App\Tests\ProjectControllerTest" classname="App.Tests.ProjectControllerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/ProjectControllerTest.php" line="82" assertions="2" time="0.025442"/>
+        <testcase name="testGameRoute" class="App\Tests\ProjectControllerTest" classname="App.Tests.ProjectControllerTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/ProjectControllerTest.php" line="93" assertions="1" time="0.032620"/>
+      </testsuite>
+      <testsuite name="App\Tests\ProjectNavigationTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/ProjectNavigationTest.php" tests="2" assertions="4" errors="0" warnings="0" failures="0" skipped="0" time="0.088999">
+        <testcase name="testAboutLinkInNavigation" class="App\Tests\ProjectNavigationTest" classname="App.Tests.ProjectNavigationTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/ProjectNavigationTest.php" line="9" assertions="2" time="0.047398"/>
+        <testcase name="testHomeLinkInNavigation" class="App\Tests\ProjectNavigationTest" classname="App.Tests.ProjectNavigationTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/ProjectNavigationTest.php" line="24" assertions="2" time="0.041601"/>
+      </testsuite>
+      <testsuite name="App\Tests\ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" tests="3" assertions="6" errors="0" warnings="0" failures="0" skipped="0" time="0.073530">
+        <testcase name="testProjectRouteFormExists" class="App\Tests\ProjectLoginUnitTest" classname="App.Tests.ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" line="9" assertions="3" time="0.026564"/>
+        <testcase name="testProjectRouteFormHasCorrectLabel" class="App\Tests\ProjectLoginUnitTest" classname="App.Tests.ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" line="20" assertions="2" time="0.024673"/>
+        <testcase name="testProjectRouteFormMethodIsPost" class="App\Tests\ProjectLoginUnitTest" classname="App.Tests.ProjectLoginUnitTest" file="/home/martin/dbwebb-kurser/mvc/me/report/tests/Project/unit/ProjectLoginUnitTest.php" line="29" assertions="1" time="0.022293"/>
+      </testsuite>
     </testsuite>
   </testsuite>
 </testsuites>

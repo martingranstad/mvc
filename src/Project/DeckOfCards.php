@@ -28,15 +28,15 @@ class DeckOfCards
     /**
      * Creates a deck of cards.
      *
-     * @param array<string> $suits The suits of the cards.
-     * @param array<string> $values The values of the cards.
+     * @param array<string|int> $suits The suits of the cards.
+     * @param array<string|int> $values The values of the cards.
      */
     private function createDeck(array $suits, array $values): void
     {
         foreach ($suits as $suit) {
             foreach ($values as $value) {
                 if (!($value == 0 || $suit == "")) {
-                    $this->cards[] = new Card($suit, $value);
+                    $this->cards[] = new Card((string)$suit, (int)$value);
                 }
             }
         }

@@ -55,10 +55,14 @@ class ProjectController extends AbstractController
         $name = $session->get("name");
         $numHands = $session->get("numHands");
         if (!$name) {
-            $name = $_POST['name'];
-            $session->set("name", $name);
-            $numHands = $_POST['numberOfHands'];
-            $session->set("numHands", $numHands);
+            if ($_POST && isset($_POST['name']) && isset($_POST['numberOfHands'])) {
+                $name = $_POST['name'];
+                $session->set("name", $name);
+                $numHands = $_POST['numberOfHands'];
+                $session->set("numHands", $numHands);
+            } else {
+                return $this->render('project/proj.html.twig');
+            }
         }
 
         // Check if player is in the database, if it is get the player money otherwise create player and set money to 1000
@@ -79,9 +83,11 @@ class ProjectController extends AbstractController
             for ($i = 0; $i < $numHands; $i++) {
                 $players[] = new Player(new CardHand());
             }
-            $game = new BlackJackGame($players,
-                                    new Bank(new CardHand()),
-                                    new DeckOfCards(4));
+            $game = new BlackJackGame(
+                $players,
+                new Bank(new CardHand()),
+                new DeckOfCards(4)
+            );
             $game->setPlayerBalance($player->getMoney());
             $session->set("game", $game);
         }
@@ -108,7 +114,6 @@ class ProjectController extends AbstractController
         }
 
         $gameResult = $game->playGame();
-        var_dump($gameResult);
         if (!$gameResult || !is_string($gameResult)) {
             $this->addFlash(
                 'notice',
@@ -228,7 +233,7 @@ class ProjectController extends AbstractController
         $gameRecord->setTime(new \DateTime());
         $doctrine->getManager()->persist($gameRecord);
         $doctrine->getManager()->flush();
-        
+
 
         $session->clear();
         return $this->render('project/game-over.html.twig', $gameResult);

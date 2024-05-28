@@ -26,7 +26,7 @@ class Player
 
     /**
      * Stop the player from betting.
-     * 
+     *
      * @return void
      */
     public function stopBetting(): void
@@ -36,9 +36,9 @@ class Player
 
     /**
      * Add a bet to the player.
-     * 
+     *
      * @param int $bet The bet to add.
-     * 
+     *
      * @return void
      */
     public function addBet(int $bet): void
@@ -48,7 +48,7 @@ class Player
 
     /**
      * Get whether the player is betting.
-     * 
+     *
      * @return bool True if the player is betting, false otherwise.
      */
     public function isBetting(): bool
@@ -58,7 +58,7 @@ class Player
 
     /**
      * Get the bet of the player.
-     * 
+     *
      * @return int The bet of the player.
      */
     public function getBet(): int

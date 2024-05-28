@@ -66,4 +66,35 @@ class ProjectControllerTest extends WebTestCase
 
         $this->assertSelectorExists('h1');
     }
+
+    // Test api route
+    public function testApiRoute(): void
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/proj/api');
+
+        $this->assertResponseIsSuccessful();
+
+        $this->assertRouteSame('proj-api');
+    }
+
+    // Test about database route
+    public function testAboutDatabaseRoute(): void
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/proj/about/database');
+
+        $this->assertResponseIsSuccessful();
+
+        $this->assertRouteSame('about-project-database');
+    }
+
+    // Test game route
+    public function testGameRoute(): void
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/proj/game');
+
+        $this->assertResponseIsSuccessful();
+    }
 }

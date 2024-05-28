@@ -59,7 +59,6 @@ class Card
             $this->points = $value;
         }
 
-        echo($this->getCardString());
     }
 
     /**

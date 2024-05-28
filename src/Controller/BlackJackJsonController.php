@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class BlackJackJsonController
 {
-
     //Route for api/game that shows the current game state
     #[Route("/proj/api/game", name: "proj-api-game", methods: ['GET'])]
     public function apiGame(
@@ -163,5 +162,5 @@ class BlackJackJsonController
         return $response;
     }
 
- 
+
 }
