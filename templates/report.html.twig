@@ -261,7 +261,7 @@
         / på scrutinizers hemsida. För testerna valde jag att fokusera på det som var relaterat till projektet och inte gammal kod.
         Jag testade dock inte controllers i någon större utsträckning utan endast det enklaste i form av att 
         se att man hamnar på rätt route och att requesten var framgångsrik. Det var lite kvar från att jag testade
-        en del innehåll på sidan i form av titel osv vilket jag tycker kan ses som en bonus.
+        en del innehåll på sidan i form av titel osv vilket jag tycker kan ses som en bonus. Testerna 
     </p>
 
     <h3>Krav 4</h3>
@@ -278,14 +278,14 @@
     <h3>Krav 5</h3>
     <p>
         För detta kravet så skapade jag två tabeller i en sqlite3-databas. En för att hålla reda på
-        hur mycket pengar tidigare spelare har. Vilket alltså agerar som en slag "inloggning" där
+        hur mycket pengar tidigare spelare har. Vilket alltså agerar som en slags "inloggning" där
         saldot för varje spelare sparas baserat på deras namn. Varje namn är dock unikt och det krävs inget
         lösenord för att spela på en viss användare. Jag upplevde inte det som en del av kraven. För den som startar
         spelet uppdateras sedan saldot varje gång man bettar och varje gång man vinner några pengar. Den andra tabellen fungerar som en historik för varje spelomgång. Där sparas spelarens namn, hur mycket
         de vann/förlorade och tidsstämpel för när spelet slutfördes sparades. Jag använde
         kommandoradsverktygen för att skapa en ny entity och sedan migrations för att uppdatera databasen.
         Det gjorde det väldigt enkelt att skapa dess tabeller. Det är också enkelt att uppdatera databasen
-        på samma sätt som jag gjorde i det tidigare kmom:et där vi arbetade med CRUD.A
+        på samma sätt som jag gjorde i det tidigare kmom:et där vi arbetade med CRUD.
     </p>
 
     <h3>Krav 6</h3>
@@ -298,6 +298,31 @@
         av info från en hemsida som jag länkar till i projektet. Funktionaliteten var inte jättekomplex att
         lägga till då det mest var att lägga till en funktion för att lägga till ett kort i counten som behövde
         köras varje gång ett kort dras samt att visa upp det i vyn. 
+    </p>
+    <p>
+        Mina försök till TDD utveckling lärde mig en del om hur jag kan tänka kring att skriva tester.
+        Jag tycker att det var nyttigt även om jag inte lyckades med det hela vägen utan fick ge upp på det.
+        Det lärde mig också en del om hur stor komponenten med att skriva tester faktiskt är. Man måste
+        utöver ett ramverk som symfony också lära sig hur det ramverket på bästa sätt testas.
+        Det var ett bra sätt att fundera igenom funktionalitet som krävs och jag lärde mig en
+        hel del om TDD genom att läsa i boken Obey The Testing Goat. Sedan var problemet att jag inte riktigt
+        hade tiden att lära mig att översätta allt till symfony och PHP istället. Men det är något jag ska
+        titta på i framtiden.
+    </p>
+    <p>
+        Jag hade en hel del strul med att få scrutinizer att fungera för mina tester. Jag lade en hel del
+        tid på att få det att fungera och lyckades tillslut när jag var på väg att ge upp. Jag vet inte riktigt
+        vad det var som gjorde att det fungerade tillslut men det uppfyller iallafall att det var tidskrävande.
+        Jag tror att det landade i förändringar i gitignore-filen.
+        Det går ju inte utanför baskraven men jag tar ändå upp det här.
+    </p>
+    <p>
+        Att jag kunde använda mig i stor utsträckning av det jag gjort tidigare i kursen tyder på att
+        att jag arbetat på ett bra objektorienterat sätt för att kunna återanvända kod. Jag ser det 
+        som en stor del kursen och nämner det därför här.
+    </p>
+
+
         
 
 {% endblock %}
