@@ -4,6 +4,7 @@
 
 {% block body %}
     <h2>GET proj/api/deck</h2>
+    <a href="{{ path('proj-api-deck') }}">GET api/deck</a>
     <p>Returnerar en JSON struktur med hela kortleken sorterad per färg och värde om det finns en kortlek i session.</p>
     <h2>POST proj/api/deck/shuffle</h2>
     <p>Blandar kortleken om den finns i session och därefter returnerar en JSON struktur med kortleken. Den blandade kortleken sparas i sessionen.</p>
@@ -26,5 +27,6 @@
         >
     </form>
     <h2>GET proj/api/game</h2>
+    <a href="{{ path('proj-api-game') }}">GET api/game</a>
     <p>Returnerar en JSON struktur med BlackJack spelet om det finns ett spel i session.</p>
 {% endblock %}
