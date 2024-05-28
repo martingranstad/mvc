@@ -2,6 +2,10 @@
 # MVC-kursen
 Detta repo finns för mitt arbete i MVC-kursen på BTH. Vi arbetar med objektorienterade webbteknologier. PHP ramverket symfony används mycket.
 
+Projektdelen av repot är ett BlackJack-spel där man kan spela BlackJack med hjälp av en korträknare med HiLo-systemet.
+
+Om du vill klona denna repo kör "git clone https://github.com/martingranstad/mvc.git" i din terminal.
+
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/martingranstad/mvc/badges/quality-score.png?b=main)](https://scrutinizer-ci.com/g/martingranstad/mvc/?branch=main)
 [![Code Coverage](https://scrutinizer-ci.com/g/martingranstad/mvc/badges/coverage.png?b=main)](https://scrutinizer-ci.com/g/martingranstad/mvc/?branch=main)
 [![Build Status](https://scrutinizer-ci.com/g/martingranstad/mvc/badges/build.png?b=main)](https://scrutinizer-ci.com/g/martingranstad/mvc/build-status/main)
