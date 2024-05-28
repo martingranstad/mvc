@@ -97,7 +97,6 @@ class CardGameController extends AbstractController
             $deck = new JokerDeckOfCards();
             $session->set("deck", $deck);
         }
-
         $card = $deck->drawCards(1)[0];
 
         $data = [

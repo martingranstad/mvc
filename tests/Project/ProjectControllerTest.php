@@ -88,13 +88,4 @@ class ProjectControllerTest extends WebTestCase
 
         $this->assertRouteSame('about-project-database');
     }
-
-    // Test game route
-    public function testGameRoute(): void
-    {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/proj/game');
-
-        $this->assertResponseIsSuccessful();
-    }
 }

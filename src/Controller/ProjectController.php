@@ -55,14 +55,10 @@ class ProjectController extends AbstractController
         $name = $session->get("name");
         $numHands = $session->get("numHands");
         if (!$name) {
-            if ($_POST && isset($_POST['name']) && isset($_POST['numberOfHands'])) {
-                $name = $_POST['name'];
-                $session->set("name", $name);
-                $numHands = $_POST['numberOfHands'];
-                $session->set("numHands", $numHands);
-            } else {
-                return $this->render('project/proj.html.twig');
-            }
+            $name = $_POST['name'];
+            $session->set("name", $name);
+            $numHands = $_POST['numberOfHands'];
+            $session->set("numHands", $numHands);
         }
 
         // Check if player is in the database, if it is get the player money otherwise create player and set money to 1000
