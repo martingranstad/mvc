@@ -31,7 +31,7 @@ class BlackJackJsonController
         );
         return $response;
     }
-    #[Route("proj/api/deck", methods: ['GET'])]
+    #[Route("proj/api/deck", name: "proj-api-deck", methods: ['GET'])]
     public function jsonDeck(
         SessionInterface $session
     ): Response {
