@@ -252,8 +252,52 @@
         Jag skapade routen och view för about sidan.
     </p>
     <p>
-        Jag skapade sedan applikationstester för projektet. Jag skapade en testklass för ProjectController och testade att routen /proj
-        renderade rätt vy. Jag skapade också en testklass för ProjectController och testade att routen /about renderade rätt vy.
+        Till en början så tänkte jag mig att jag skulle arbeta på ett TDD sätt med funktions och enhetstester.
+        Så jag började skriva tester med user stories och liknande men märkte snabbt att med min erfarenhet
+        så skulle det bli ett alldeles för stort antagande att få allt att fungera.  
     </p>
+    <p>
+        Allt var ordninggjort för scrutinizer/phpdoc/phpmetrics osv så det gällde bara att köra de olika med composer
+        / på scrutinizers hemsida. För testerna valde jag att fokusera på det som var relaterat till projektet och inte gammal kod.
+        Jag testade dock inte controllers i någon större utsträckning utan endast det enklaste i form av att 
+        se att man hamnar på rätt route och att requesten var framgångsrik. Det var lite kvar från att jag testade
+        en del innehåll på sidan i form av titel osv vilket jag tycker kan ses som en bonus.
+    </p>
+
+    <h3>Krav 4</h3>
+    <p>Eftersom att mycket av projektet utgick från det jag gjort i tidigare kmom så kunde jag utgå från
+        de API-routes som skapats där. Jag kopierade sålunda bara över api.html.twig och CardGameControllerJson.php
+        och modifierade dem så att de passade projektet istället vilket inte var någon större skillnad. 
+        Jag gjorde så att det gick att klicka sig in till varje api route och att det gick att skicka
+        POST requests till de routes som krävde det. Sedan var det bara att lägga till en ny route i projektet.
+        Följt av skapa en länk i navigationen. Det blev helt enkelt inte jättemycket annorlunda då jag gjorde
+        ganska små justeringar på de klasser som användes för i tidigare KMOM så jag behövde inte göra så
+        mycket annorlunda i de nya API-routesen.
+    </p>
+
+    <h3>Krav 5</h3>
+    <p>
+        För detta kravet så skapade jag två tabeller i en sqlite3-databas. En för att hålla reda på
+        hur mycket pengar tidigare spelare har. Vilket alltså agerar som en slag "inloggning" där
+        saldot för varje spelare sparas baserat på deras namn. Varje namn är dock unikt och det krävs inget
+        lösenord för att spela på en viss användare. Jag upplevde inte det som en del av kraven. För den som startar
+        spelet uppdateras sedan saldot varje gång man bettar och varje gång man vinner några pengar. Den andra tabellen fungerar som en historik för varje spelomgång. Där sparas spelarens namn, hur mycket
+        de vann/förlorade och tidsstämpel för när spelet slutfördes sparades. Jag använde
+        kommandoradsverktygen för att skapa en ny entity och sedan migrations för att uppdatera databasen.
+        Det gjorde det väldigt enkelt att skapa dess tabeller. Det är också enkelt att uppdatera databasen
+        på samma sätt som jag gjorde i det tidigare kmom:et där vi arbetade med CRUD.A
+    </p>
+
+    <h3>Krav 6</h3>
+    <p>
+        Jag tog en av förslagen för BlackJack vilket var att lägga till korträkningsfunktionalitet.
+        Jag använde ett Hi Lo system där jag räknade korten i en kortlek som -1, 0 eller 1.
+        Jag håller koll på true count samt running count. True count är running count dividerat med antalet kortlekar kvar i leken.
+        Tanken är att spelaren ska satsa mer när true count är högt och mindre när den är låg så det finns 
+        som en liten guide för spelare. Jag vet egentligen inte exakt hur systemet fungerar men använde mig
+        av info från en hemsida som jag länkar till i projektet. Funktionaliteten var inte jättekomplex att
+        lägga till då det mest var att lägga till en funktion för att lägga till ett kort i counten som behövde
+        köras varje gång ett kort dras samt att visa upp det i vyn. 
+        
 
 {% endblock %}

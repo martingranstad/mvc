@@ -1,0 +1,47 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE doctrine_migration_versions (version VARCHAR(191) NOT NULL, executed_at DATETIME DEFAULT NULL, execution_time INTEGER DEFAULT NULL, PRIMARY KEY(version));
+INSERT INTO doctrine_migration_versions VALUES('DoctrineMigrations\Version20240502124431','2024-05-02 12:46:07',7);
+INSERT INTO doctrine_migration_versions VALUES('DoctrineMigrations\Version20240524115114','2024-05-24 11:52:16',10);
+INSERT INTO doctrine_migration_versions VALUES('DoctrineMigrations\Version20240524131148','2024-05-24 13:11:54',7);
+CREATE TABLE book (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, titel VARCHAR(255) DEFAULT NULL, isbn VARCHAR(13) NOT NULL, author VARCHAR(255) DEFAULT NULL, image VARCHAR(2048) DEFAULT NULL);
+INSERT INTO book VALUES(3,'hallå','ISBN','Author','Image url');
+INSERT INTO book VALUES(6,'hallå','asdfasdfasaaa','adfasdfaasda','adsfas');
+INSERT INTO book VALUES(9,'qqq','qqqqqqqqqqqqq','qqq','qqq');
+CREATE TABLE messenger_messages (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, body CLOB NOT NULL, headers CLOB NOT NULL, queue_name VARCHAR(190) NOT NULL, created_at DATETIME NOT NULL --(DC2Type:datetime_immutable)
+        , available_at DATETIME NOT NULL --(DC2Type:datetime_immutable)
+        , delivered_at DATETIME DEFAULT NULL --(DC2Type:datetime_immutable)
+        );
+CREATE TABLE game_record (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, player_name VARCHAR(255) NOT NULL, result INTEGER NOT NULL, time DATETIME DEFAULT NULL);
+INSERT INTO game_record VALUES(1,'r',200,'2024-05-24 13:16:58');
+INSERT INTO game_record VALUES(2,'r',0,'2024-05-24 13:21:36');
+INSERT INTO game_record VALUES(3,'t',0,'2024-05-24 13:26:34');
+INSERT INTO game_record VALUES(4,'p',-100,'2024-05-24 13:29:20');
+INSERT INTO game_record VALUES(5,'p',-350,'2024-05-24 13:30:15');
+INSERT INTO game_record VALUES(6,'Anders',-100,'2024-05-24 15:26:50');
+INSERT INTO game_record VALUES(7,'ää',200,'2024-05-24 15:27:43');
+INSERT INTO game_record VALUES(8,'n',300,'2024-05-24 15:29:05');
+INSERT INTO game_record VALUES(9,'a',-100,'2024-05-24 15:32:17');
+INSERT INTO game_record VALUES(10,'k',100,'2024-05-24 15:32:40');
+CREATE TABLE player (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name VARCHAR(255) NOT NULL, money INTEGER NOT NULL);
+INSERT INTO player VALUES(1,'Martin',100);
+INSERT INTO player VALUES(2,'a',0);
+INSERT INTO player VALUES(3,'s',400);
+INSERT INTO player VALUES(4,'d',800);
+INSERT INTO player VALUES(5,'q',413);
+INSERT INTO player VALUES(6,'w',1101);
+INSERT INTO player VALUES(7,'r',1300);
+INSERT INTO player VALUES(8,'t',1200);
+INSERT INTO player VALUES(9,'p',550);
+INSERT INTO player VALUES(10,'Anders',900);
+INSERT INTO player VALUES(11,'ää',1200);
+INSERT INTO player VALUES(12,'n',1300);
+INSERT INTO player VALUES(13,'k',1100);
+DELETE FROM sqlite_sequence;
+INSERT INTO sqlite_sequence VALUES('book',9);
+INSERT INTO sqlite_sequence VALUES('player',13);
+INSERT INTO sqlite_sequence VALUES('game_record',10);
+CREATE INDEX IDX_75EA56E0FB7336F0 ON messenger_messages (queue_name);
+CREATE INDEX IDX_75EA56E0E3BD61CE ON messenger_messages (available_at);
+CREATE INDEX IDX_75EA56E016BA31DB ON messenger_messages (delivered_at);
+COMMIT;
